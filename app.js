@@ -12,7 +12,25 @@ app.use(session({
   secret: 'ManoSecretas',
   resave: false,
   saveUninitialized: false
-}))
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieParser());
+//javascript -> moka kaip bicas pazadeti kazka
+mongoose.Promise = global.Promise;
+
+//http:// -> mysql:// ->
+mongoose.connect('mongodb://localhost/mano-projekto-db', { useNewUrlParser: true })
+.then(() => console.log('Success connect to Database'))
+.catch((error)=> console.log(error));
+
+var User = require('./models/User');
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
