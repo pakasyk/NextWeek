@@ -1,10 +1,10 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var ExerciseSchema = new Schema({
+const ExerciseSchema = new Schema({
     name: String, // Bench Press
-    category: String,  //from schema
-    muscle: String, //from schema
+    category: String, //from schema
+    muscle: { type: Schema.Types.ObjectId, ref: 'Muscle' }, //from schema
     equipment: String, //from schema
     image: String, //url
     status: Boolean, //true - active, false - deleted
@@ -17,19 +17,26 @@ var ExerciseSchema = new Schema({
     // user_deleted: String,
 });
 
-var ExerciseCategorySchema = new Schema({
+const ExerciseCategorySchema = new Schema({
     name: String, // Cardio, Streching, Lifting Weights
 });
 
-var ExerciseMuscleSchema = new Schema({
+const ExerciseMuscleSchema = new Schema({
     name: String, // Chest, Legs, Back, Shoulders
 });
 
-var ExerciseEquipmentSchema = new Schema({
+const ExerciseEquipmentSchema = new Schema({
     name: String, // Dumbells, Barbell, Bodyweight
 });
 
-module.exports.Exercise = mongoose.model('Exercise', ExerciseSchema);
-module.exports.Category = mongoose.model('Category', ExerciseCategorySchema);
-module.exports.Muscle = mongoose.model('Muscle', ExerciseMuscleSchema);
-module.exports.Equipment = mongoose.model('Equipment', ExerciseEquipmentSchema);
+const Exercise = mongoose.model('Exercise', ExerciseSchema);
+const Category = mongoose.model('Category', ExerciseCategorySchema);
+const Muscle = mongoose.model('Muscle', ExerciseMuscleSchema);
+const Equipment = mongoose.model('Equipment', ExerciseEquipmentSchema);
+
+module.exports = {
+    Exercise,
+    Category,
+    Muscle,
+    Equipment
+};
