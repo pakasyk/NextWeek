@@ -7,6 +7,16 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var app = express();
+
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieParser());
 
 app.use(session({
   secret: 'ManoSecretas',
@@ -14,28 +24,21 @@ app.use(session({
   saveUninitialized: false
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(cookieParser());
-//javascript -> moka kaip bicas pazadeti kazka
 mongoose.Promise = global.Promise;
 
 //http:// -> mysql:// ->
-mongoose.connect('mongodb://localhost/mano-projekto-db', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/nextweek-db', { useNewUrlParser: true })
 .then(() => console.log('Success connect to Database'))
 .catch((error)=> console.log(error));
 
 var User = require('./models/User');
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
