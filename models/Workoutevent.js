@@ -12,6 +12,15 @@ const WorkouteventSchema = new mongoose.Schema({
     },
     id: {
       type: String
+    },
+    event_pid: {
+      type: String
+    },
+    event_length: {
+      type: String
+    },
+    rec_type: {
+      type: String
     }
   });
   

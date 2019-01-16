@@ -50,20 +50,46 @@ router.post('/data', function(req, res){
 	}
 
 	if (mode == "updated") {
-    Workoutevent.findByIdAndUpdate( sid, data, update_response);
+        console.log("updatinam>>>>>>>>>>>>>>>");
+    Workoutevent.findById(sid, (err, eventFromDB)=>{
+        eventFromDB.text = data.text;
+        eventFromDB.start_date = data.start_date;
+        eventFromDB.end_date = data.end_date;
+        eventFromDB.event_pid = data.event_pid;
+        eventFromDB.event_length = data.event_length;
+        eventFromDB.rec_type = data.rec_type;
+        
+        eventFromDB.save(function(err, post) {
+        if (err) throw err;
+            res.redirect('/calendar');
+        });  
+    })
     } else if (mode == "inserted") {
         console.log(" iki cia daejo >>>>>>");
 		let newEvent = new Workoutevent({
             start_date: data.start_date,
             end_date: data.end_date,
-            text: data.text
+            text: data.text,
+            event_pid: data.event_pid,
+            event_length: data.event_length,
+            rec_type: data.rec_type
         });
         newEvent.save();
     } else if (mode == "deleted") {
-		Workoutevent.findByIdAndRemove( sid, update_response);
+        console.log('trinam>>>>>>>>>>>')
+		Workoutevent.findOneAndDelete({ "_id": sid  }, (error, data)=>{
+            if(error){
+                console.log("error in deleting!");
+                throw error;
+            } else {
+                console.log("data all gone and deleted");
+                res.status(204);
+            }
+        });
     } else {
         res.send("Not supported operation");
     }    
+    // res.redirect('/calendar');
 });
 
 module.exports = router;
