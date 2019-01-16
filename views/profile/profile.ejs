@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/stylesheets/andrej.style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <title>Document</title>
 </head>
 <body>
@@ -40,19 +41,51 @@
                 
                 <label for="photo">Yours Photo:</label><br>
                 <input type="file" name="photo" id="photo"><br>
-                <input type="checkbox" name="agree" value="check">I agree to the Terms of Use<br>
-                <button type="submit">Save</button>
+                <button type="submit" class="button">Save</button>
+                <input type="checkbox" name="agree" id="check" value="check"><span>I agree to the Terms of Use</span>
+                
              </div>
              <div class="right-form">
-                <div class="goals">
-
-                </div>
-                <div class="prBodyPlace">
-
-                </div>
-                <div class="traumas">
-
-                </div>
+                <div class="right-top">
+                    <div class="goals">
+                        <label for="goal">What's Yours Goal?</label><br>
+                        <span class="goal-inputs">
+                        <input type="radio" name="goal" id="goal" value="loseWeight"><span>Lose Weight</span><br>
+                        <input type="radio" name="goal" id="goal" value="getFit"><span>Get Fit</span><br>
+                        <input type="radio" name="goal" id="goal" value="getStrong"><span>Get Strong</span><br>
+                        <input type="radio" name="goal" id="goal" value="gainWeight"><span>Gain Weight</span>
+                    </span>
+                    </div>
+                    <div class="prBodyArea">
+                        <label for="prblArea">Yours Problem Area:</label><br>
+                        <span class="body-inputs">
+                        <input type="radio" name="problemArea" id="prblArea" value="back"><span>Back</span><br>
+                        <input type="radio" name="problemArea" id="prblArea" value="arms"><span>Arms</span><br>
+                        <input type="radio" name="problemArea" id="prblArea" value="abs"><span>Abs</span><br>
+                        <input type="radio" name="problemArea" id="prblArea" value="legs"><span>Legs</span><br>
+                    </span>
+                    </div>
+                 </div>
+                 <div class="right-middle">
+                     <div class="alcohol">
+                        <label for="">Do You Drink Alcohol?</label><br>
+                        <input type="radio" name="alcohol" id="alcohol" value="yes"><span>Yes</span><br>
+                        <input type="radio" name="alcohol" id="alcohol" value="aBit"><span>A Bit</span><br>
+                        <input type="radio" name="alcohol" id="alcohol" value="no"><span>No</span><br>
+                     </div>
+                     <div class="smoke">
+                            <label for="">Do You Smoke?</label><br>
+                            <input type="radio" name="smoke" id="smoke" value="yes"><span>Yes</span><br>
+                            <input type="radio" name="smoke" id="smone" value="aBit"><span>No</span><br>
+                     </div>
+                    </div>
+                     <div class="right-bottom">
+                            <div class="traumas">
+                                <label for="traumas">Traumas:</label>
+                                <textarea name="traumas" id="traumas" cols="43" rows="4" placeholder="Write yours traumas:"></textarea>
+                            </div>
+                     </div>
+                 
              </div>
         </form>
     </div>

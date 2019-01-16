@@ -1,3 +1,6 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
 body{
     background-image: url(https://www.renomia.cz/files/sport-622003802-3500x2333.jpg);
     background-repeat: no-repeat;
@@ -38,7 +41,7 @@ body{
     font-size: 16px;
 }
 .left-form #nickName {
-    width: 80%;
+    width: 90%;
 }
 .left-form #nickName, #years, #month, #day, #gender, #height, #weight{
     padding: 5px 10px;
@@ -46,14 +49,14 @@ body{
     margin: 7px 0 12px 0;
 }
 .left-form > #years{
-    width: 25%;
+    width: 29%;
 }
 .left-form > #month{
-    width: 12%;
+    width: 15%;
     margin: 8px 40.5px;
 }
 .left-form > #day{
-    width: 20%;
+    width: 23%;
 }
 .left-form span {
     margin: 8px 20px;
@@ -64,16 +67,69 @@ body{
     display: flex;
 }
 .left-form .weight{
-    margin-left: 24px;
+    margin-left: 3.44%;
 }
 .left-form #height, #weight {
     width: 80%;
 }
+.left-form #photo{
+    padding: 5px 0;
+    font-size: 18px;
+    margin: 7px 0 12px 0;
+    color: grey;
+}
+.left-form #check{
+    margin: 7px 10px 12px 7%;
+    width: 15px;    
+    height: 15px;
+}
+.left-form .button {
+    padding: 2% 11%;
+    font-size: 24px;   
+    margin: 7px 0 12px 0;
+    background-color: #2ebcfe;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    border-radius: 10px;
+    opacity: 0.9;
+    border: none;
+}
 .left-form #nickName:focus, #years:focus, #month:focus, #day:focus, #height:focus, #weight:focus {
     border: 1px solid rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid  rgba(46, 188, 254, 0.9); 
 }
 
 .right-form{
-    width: 44%;
+    width: 45%;
+    padding: 0 10px;
+}
+.right-top, .right-middle{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+}
+.right-top .goals, .right-top .prBodyArea, .right-middle .alcohol, .right-middle .smoke{
+    width: 40%;
+    border: 2px solid rgba(46, 188, 254, 0.9);
+    border-radius: 15px;
+    padding: 10px;
+    opacity: 0.9;
+    color: grey;
+}
+
+.right-bottom {
+    width: 95%;
+    border: 2px solid rgba(46, 188, 254, 0.9);
+    border-radius: 15px;
+    padding: 10px;
+    opacity: 0.9;
+    color: grey;
+}
+.right-bottom textarea{
+    resize: none;
+    border: 1px solid  rgba(255, 255, 255, 0.9);
+}
+.right-bottom textarea:focus{
+    border-bottom: 1px solid  rgba(46, 188, 254, 0.9); 
 }
