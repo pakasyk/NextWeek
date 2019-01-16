@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Equipment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mnd_style.css" />
+</head>
+
+<body>
+    <a href="/exercises">Back to Exercises</a>
+    <div>
+        <form action="/exercises/equipments" method="post">
+            <label for="name">Equipment</label>
+            <input type="text" placeholder="Equipment" name="name">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div>
+        <% if(Object.keys(equipmentList).length){ %>
+        <ul>
+            <% for(let i = 0; i < equipmentList.length; ++i){ %>
+            <li>
+                <%= equipmentList[i].name %>
+            </li>
+            <% } %>
+        </ul>
+        <% }else { %>
+        <p>No equipment found..</p>
+
+        <% } %>
+    </div>
+
+</body>
+
+</html>

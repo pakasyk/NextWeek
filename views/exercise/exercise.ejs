@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mnd_style.css" />
+</head>
+
+<body>
+    <a href="/">Back to Home</a>
+    <div>
+        <form action="/exercises" method="post">
+            <label for="name">Exercise Name</label>
+            <input type="text" placeholder="Exercise" name="name">
+            <label for="muscle">Muscles Group</label>
+            <select name="muscle">
+                <option value="" selected disabled hidden>Choose here</option>
+                <% if(Object.keys(muscleList).length){ %>
+                  
+                        <% for(let i = 0; i < muscleList.length; ++i){ %>
+                        <option value="<%= muscleList[i].id %>">
+                            <%= muscleList[i].name %>
+                        </option>
+                        <% } %>
+                
+                    
+                    <% } %>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div>
+        <% if(Object.keys(exerciseList).length){ %>
+        <ul>
+            <% for(let i = 0; i < exerciseList.length; ++i){ %>
+            <li>
+                <%= exerciseList[i].name %>
+                <%= exerciseList[i].muscle %>
+            </li>
+            <% } %>
+        </ul>
+        <% }else { %>
+        <p>No exercise found.</p>
+
+        <% } %>
+    </div>
+
+</body>
+
+</html>
