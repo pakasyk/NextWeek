@@ -1,0 +1,79 @@
+body{
+    background-image: url(https://www.renomia.cz/files/sport-622003802-3500x2333.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 24%;
+}
+.main-container{
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: white;
+    opacity: 0.9;
+    
+}
+.header {
+    background-color: #2ebcfe;
+    opacity: 0.9;
+}
+.header h1{
+    padding: 10px 0 10px 30px;
+    font-size: 38px;
+    color: white;
+    opacity: 0.9;
+}
+.main-container h2 {
+    padding-left: 10px;
+    opacity: 0.9;
+}
+.profile-form {
+    display: flex;
+    padding: 10px;
+}
+.left-form{
+    width: 54%;
+    border-right: 1px solid grey;
+}
+.left-form label{
+    color: grey;
+    font-size: 16px;
+}
+.left-form #nickName {
+    width: 80%;
+}
+.left-form #nickName, #years, #month, #day, #gender, #height, #weight{
+    padding: 5px 10px;
+    font-size: 18px;
+    margin: 7px 0 12px 0;
+}
+.left-form > #years{
+    width: 25%;
+}
+.left-form > #month{
+    width: 12%;
+    margin: 8px 40.5px;
+}
+.left-form > #day{
+    width: 20%;
+}
+.left-form span {
+    margin: 8px 20px;
+    font-size: 18px;
+    color: grey;
+}
+.left-form .height-weight{
+    display: flex;
+}
+.left-form .weight{
+    margin-left: 24px;
+}
+.left-form #height, #weight {
+    width: 80%;
+}
+.left-form #nickName:focus, #years:focus, #month:focus, #day:focus, #height:focus, #weight:focus {
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid black; 
+}
+
+.right-form{
+    width: 44%;
+}
