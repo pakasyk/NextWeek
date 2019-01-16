@@ -1,74 +1,62 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var session = require('express-session');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var exercisesRouter = require('./routes/exercises');
+const express = require('express');
 
 var app = express();
 
+var mongoose = require('mongoose');
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var session = require('express-session');
 
-app.use(passport.initialize());
-app.use(passport.session());
-
+var cookieParser = require('cookie-parser'); 
 
 app.use(session({
-  secret: 'ManoSecretas',
-  resave: false,
-  saveUninitialized: false
-}));
-
+    secret: 'ManoSlaptasKeyKurioPagalbaUzkoduosVartotojuSlaptazodziuIDB',
+    resave: false,
+    saveUninitialized: false
+}))
+  
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieParser());
+//javascript -> moka kaip bicas pazadeti kazka
 mongoose.Promise = global.Promise;
 
 //http:// -> mysql:// ->
-mongoose.connect('mongodb://localhost/nextweek-db', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/mano-projekto-db', { useNewUrlParser: true })
 .then(() => console.log('Success connect to Database'))
 .catch((error)=> console.log(error));
 
-var User = require('./models/User');
-
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
 
 
 
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+
+
+//apacioje esantis kodas veliau bus isskaidytas i kitus folderius...
+
+var port = 3000;
+
+app.listen(port, () => {console.log(`Server is running on http://localhost:${port}/`)});
+
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/exercises', exercisesRouter);
 
-// catch 404 and forward to error handler
+
+var User = require('./models/User');
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use('/', require('./routes/index'));
+app.use('/', require('./routes/users'));
+
+
 app.use(function(req, res, next) {
-  next(createError(404));
+    var err = new Error('Not Found');
+    err.status = 404;
+    res.render('404');
 });
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
