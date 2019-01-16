@@ -32,8 +32,7 @@ exerciseController.showAll = (req, res) =>{
     })
     Exercise.find({}, (err, exercises)=>{ 
         if (err) throw err; 
-        console.log(exercises[0].muscle);
-        console.log(typeof(exercises[0].muscle));
+        
         JSON.stringify(exercises.muscle);
         
         res.render('exercise/exercise', {exerciseList: exercises, muscleList: muscles});
