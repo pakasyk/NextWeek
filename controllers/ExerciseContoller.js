@@ -23,20 +23,29 @@ exerciseController.onCreate = (req, res, next) => {
 }
 
 /* showing all exercises on exercises/exercises */
-exerciseController.showAll = (req, res) =>{
+exerciseController.showAll = async function(req, res){
     console.log("showAll");
     let muscles;
-    Muscle.find({}, (err, muscleList)=>{ 
+    let categories;
+    let equipments;
+    await Muscle.find({}, (err, muscleList)=>{ 
         if (err) throw err; 
         muscles = muscleList;
     })
-    Exercise.find({}, (err, exercises)=>{ 
+    await Category.find({}, (err, categoryList)=>{ 
         if (err) throw err; 
-        console.log(exercises[0].muscle);
-        console.log(typeof(exercises[0].muscle));
+        categories = categoryList;
+    })
+    await Equipment.find({}, (err, equipmentList)=>{ 
+        if (err) throw err; 
+        equipments = equipmentList;
+    })
+    
+    await Exercise.find({}, (err, exercises)=>{ 
+        if (err) throw err; 
         JSON.stringify(exercises.muscle);
         
-        res.render('exercise/exercise', {exerciseList: exercises, muscleList: muscles});
+        res.render('exercise/exercise', {exerciseList: exercises, muscleList: muscles, categoryList: categories, equipmentList: equipments});
     })
 }
 

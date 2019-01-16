@@ -6,48 +6,102 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Exercises</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css" /> -->
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mnd_style.css" />
 </head>
 
 <body>
-    <a href="/">Back to Home</a>
-    <div>
-        <form action="/exercises" method="post">
-            <label for="name">Exercise Name</label>
-            <input type="text" placeholder="Exercise" name="name">
-            <label for="muscle">Muscles Group</label>
-            <select name="muscle">
-                <option value="" selected disabled hidden>Choose here</option>
-                <% if(Object.keys(muscleList).length){ %>
-                  
-                        <% for(let i = 0; i < muscleList.length; ++i){ %>
-                        <option value="<%= muscleList[i].id %>">
-                            <%= muscleList[i].name %>
-                        </option>
-                        <% } %>
-                
-                    
-                    <% } %>
-            </select>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <div>
-        <% if(Object.keys(exerciseList).length){ %>
-        <ul>
-            <% for(let i = 0; i < exerciseList.length; ++i){ %>
-            <li>
-                <%= exerciseList[i].name %>
-                <%= exerciseList[i].muscle %>
-            </li>
-            <% } %>
+    <main class="exercise">
+        
+        <ul class="sub-menu">
+            <li><a href="/exercises/muscles">Muscles</a></li>
+            <li><a href="/exercises/categories">Categories</a></li>
+            <li><a href="/exercises/equipments">Equipment</a></li>        
         </ul>
-        <% }else { %>
-        <p>No exercise found.</p>
+        <a href="/">Back to Home</a>
+        
+        <div>
+            <% if(Object.keys(exerciseList).length){ %>
+            <ul>
+                <% for(let i = 0; i < exerciseList.length; ++i){ %>
+                <li>
+                    <%= exerciseList[i].name %>
+                    <%= exerciseList[i].muscle %>
+                </li>
+                <% } %>
+            </ul>
+            <% }else { %>
+            <p>No exercise found.</p>
 
-        <% } %>
-    </div>
-
+            <% } %>
+        </div>
+        <button type="button" class="btn btn-success bmd-btn-fab create">
+            <i class="material-icons">plus</i>
+        </button>
+        <div class="exercise-create-outer">
+            <div class="exercise-create-inner">
+                <form action="/exercises" method="post">
+                    <div>
+                        <label for="name">Exercise Name</label>
+                        <input type="text" placeholder="Exercise" name="name">
+                    </div>
+                    <div>
+                        <label for="muscle">Muscles Group</label>
+                        <select name="muscle">
+                            <option value="" selected disabled hidden>Choose here</option>
+                            <% if(Object.keys(muscleList).length){ %>
+                            
+                                    <% for(let i = 0; i < muscleList.length; ++i){ %>
+                                    <option value="<%= muscleList[i].id %>">
+                                        <%= muscleList[i].name %>
+                                    </option>
+                                    <% } %>
+                            
+                                
+                                <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="category">Category</label>
+                        <select name="category">
+                            <option value="" selected disabled hidden>Choose here</option>
+                            <% if(Object.keys(categoryList).length){ %>
+                            
+                                    <% for(let i = 0; i < categoryList.length; ++i){ %>
+                                    <option value="<%= categoryList[i].id %>">
+                                        <%= categoryList[i].name %>
+                                    </option>
+                                    <% } %>
+                            
+                                
+                                <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="equipment">Equipment</label>
+                        <select name="equipment">
+                            <option value="" selected disabled hidden>Choose here</option>
+                            <% if(Object.keys(equipmentList).length){ %>
+                            
+                                    <% for(let i = 0; i < equipmentList.length; ++i){ %>
+                                    <option value="<%= equipmentList[i].id %>">
+                                        <%= equipmentList[i].name %>
+                                    </option>
+                                    <% } %>
+                            
+                                
+                                <% } %>
+                        </select>
+                    </div>
+                    
+                    
+                    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="/javascripts/mnd_main.js"></script>
 </body>
 
 </html>

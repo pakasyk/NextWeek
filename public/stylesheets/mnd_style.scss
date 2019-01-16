@@ -1,5 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100vh;
+}
+
+main {   
+    width: 100%;
+    height: 100vh;
+    &.exercise {
+        position: relative;
+
+
+    }
+}
+
+.exercise-create-outer {
+    
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    .exercise-create-inner {
+        background-color: #fff;
+        width: 80%;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+
+        form {
+            width: 90%;
+
+            >div {
+                flex: 0 40%;
+                max-width: 40%;
+            }
+        }
+        
+    }
+}
+
+
+.sub-menu {
+    li {
+        display: inline;
+    }
 }

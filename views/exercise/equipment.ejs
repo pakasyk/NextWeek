@@ -10,29 +10,31 @@
 </head>
 
 <body>
-    <a href="/exercises">Back to Exercises</a>
-    <div>
-        <form action="/exercises/equipments" method="post">
-            <label for="name">Equipment</label>
-            <input type="text" placeholder="Equipment" name="name">
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <div>
-        <% if(Object.keys(equipmentList).length){ %>
-        <ul>
-            <% for(let i = 0; i < equipmentList.length; ++i){ %>
-            <li>
-                <%= equipmentList[i].name %>
-            </li>
+    <main>
+        
+        <a href="/exercises">Back to Exercises</a>
+        <div>
+            <form action="/exercises/equipments" method="post">
+                <label for="name">Equipment</label>
+                <input type="text" placeholder="Equipment" name="name">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div>
+            <% if(Object.keys(equipmentList).length){ %>
+            <ul>
+                <% for(let i = 0; i < equipmentList.length; ++i){ %>
+                <li>
+                    <%= equipmentList[i].name %>
+                </li>
+                <% } %>
+            </ul>
+            <% }else { %>
+            <p>No equipment found..</p>
+
             <% } %>
-        </ul>
-        <% }else { %>
-        <p>No equipment found..</p>
-
-        <% } %>
-    </div>
-
+        </div>
+    </main>
 </body>
 
 </html>
