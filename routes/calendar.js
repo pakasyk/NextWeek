@@ -9,12 +9,12 @@ const Workoutevent = require('../models/Workoutevent')
 
 
 router.get('/', function(req, res, next) {
-    console.log("veikia>>>>>>>>>>>>>>>>>>>");
+    // console.log("veikia>>>>>>>>>>>>>>>>>>>");
     res.render('calendar/calendar');
   });
 
 router.get('/data', function(req, res){
-    console.log("veikia>>>>>>>>>>>>>>>>>>>>");
+    // console.log("veikia>>>>>>>>>>>>>>>>>>>>");
 	Workoutevent.find({}, function(err, data){
         console.log(data)
 		//set id property for all records
@@ -50,9 +50,9 @@ router.post('/data', function(req, res){
 	}
 
 	if (mode == "updated") {
-        console.log("updatinam>>>>>>>>>>>>>>>");
+        // console.log("updatinam>>>>>>>>>>>>>>>");
     Workoutevent.findById(sid, (err, eventFromDB)=>{
-        eventFromDB.text = data.text;
+        eventFromDB.text = data.type;
         eventFromDB.start_date = data.start_date;
         eventFromDB.end_date = data.end_date;
         eventFromDB.event_pid = data.event_pid;
@@ -65,18 +65,18 @@ router.post('/data', function(req, res){
         });  
     })
     } else if (mode == "inserted") {
-        console.log(" iki cia daejo >>>>>>");
+        // console.log(" iki cia daejo >>>>>>");
 		let newEvent = new Workoutevent({
             start_date: data.start_date,
             end_date: data.end_date,
-            text: data.text,
+            text: data.type,
             event_pid: data.event_pid,
             event_length: data.event_length,
             rec_type: data.rec_type
         });
         newEvent.save();
     } else if (mode == "deleted") {
-        console.log('trinam>>>>>>>>>>>')
+        // console.log('trinam>>>>>>>>>>>')
 		Workoutevent.findOneAndDelete({ "_id": sid  }, (error, data)=>{
             if(error){
                 console.log("error in deleting!");

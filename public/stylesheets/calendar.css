@@ -37,25 +37,61 @@
     background-color: #6200EE;
     color: white;
 }
+
+.dhx_cal_lsection div.dhx_custom_button,
+.dhx_cancel_btn_set {
+    color: rgba(0, 0, 0, 0.753)
+}
+
+.dhx_qi_big_icon,
 .dhx_cal_next_button,
 .dhx_cal_today_button {
     color: #3700B3;
 }
 
+.dhx_cal_qi_title {
+    background-color: #3700B3;
+}
+
+.dhx_save_btn_set,
+.dhx_cal_ltitle,
 .dhx_title,
 .dhx_body,
 .dhx_cal_event,
 .dhx_cal_event_line {
     background-color: #03DAC5 !important;
+    border-color: #03DAC5;
+}
+
+.dhx_cal_event_line{
+    height: 17px;
 }
 
 .dhx_cal_event_clear {
-    color: #03DAC5;
+    background-color: #03DAC5;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-family: Roboto,Arial;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    height: 17px;
+    padding: 0 0 1px 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.dhx_wrap_section:first-child {
+    display: none;
+}
+
+.dhx_agenda_area .dhx_agenda_line .dhx_event_icon, .dhx_map_area .dhx_map_line .dhx_event_icon {
+    background: url('/images/agenda-calendar.png') center center no-repeat;
 }
 
 
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .dhx_cal_date {
     display: none;
   }

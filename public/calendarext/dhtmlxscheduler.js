@@ -3705,7 +3705,7 @@ var dataProcessor = (window.dataProcessor = function(e) {
       day_tab: "Day",
       week_tab: "Week",
       month_tab: "Month",
-      new_event: "New event",
+      new_event: "New Workout",
       icon_save: "Save",
       icon_cancel: "Cancel",
       icon_details: "Details",
