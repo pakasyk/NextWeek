@@ -14,18 +14,19 @@
             <h1>Create Profile Page</h1>
         </div>
         <h2>Hello User Useraitis</h2>
+        <p><a href="/newPassword"> Change password</a></p>
         <form class="profile-form" action="/createProfile" method="post">
             <div class="left-form">
                 
                 <label for="nickName">Yours Nick Name:</label><br>
-                <input type="text" name="nickName" id="nickName" placeholder="Nick name"><br>
+                <input type="text" name="nickname" id="nickName" placeholder="Nick name"><br>
 
                 <label for="dateOfBirth">Date of Birth:</label><br>
                 <input type="number" name="year" id="years" min="1919" max="2005" placeholder="2000"><input id="month" type="number" name="month" min="1" max="12" placeholder="07"><input id="day" type="number" name="day" min="1" max="31" placeholder="19"> <br>
 
                 <label for="gender">Gender:</label><br>
                 <input type="radio" id="gender" name="gender" value="male" placeholder="male"> <span>Male</span>
-                <input type="radio" id="gender" name="gender" value="female"> <span>Femele</span>
+                <input type="radio" id="gender" name="gender" value="female"> <span>Female</span>
                 <input type="radio" id="gender" name="gender" value="other"> <span>Other</span> <br>  
 
                 <div class="height-weight">

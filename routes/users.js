@@ -12,6 +12,7 @@ router.get('/createProfile', ProfileController.profile );
 router.post('/createProfile', ProfileController.createProfile, ProfileController.profileEnd );
 
 router.get('/profileEnd', ProfileController.profileEnd)
+router.get('/newPassword', ProfileController.changePassword)
 
 
 

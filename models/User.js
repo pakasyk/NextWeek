@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var ProfileSchema = new Schema({
     //Privalomi laukeliai
-    nickName: String,// neveikia
+    nickname: String, // neveikia
     year: String,
     month: String,
     day: String,

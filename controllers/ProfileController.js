@@ -12,7 +12,7 @@ profileController.createProfile = (req, res, next) => {
     console.log('createProfile');
     
     let newProfile = Profile({
-        nick: req.body.nickName,//neveikia
+        nick: req.body.nickname,//neveikia
         year: req.body.year,
         month: req.body.month,
         day: req.body.day,
@@ -51,6 +51,9 @@ profileController.profileEnd = (req, res) => {
     })
 }
 
+profileController.changePassword = (req, res) => {
+    res.render('profile/newPassword')
+};
 
 
 module.exports = profileController;
