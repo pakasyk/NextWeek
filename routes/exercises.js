@@ -8,6 +8,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 /* GET exercises listing. */
 router.get('/', exerciseController.showAll);
 router.post('/', exerciseController.onCreate, exerciseController.showAll);
+router.post('/edit', exerciseController.onEdit);
 
 router.get('/muscles', muscleController.showAll);
 router.post('/muscles', muscleController.onCreate, muscleController.showAll);

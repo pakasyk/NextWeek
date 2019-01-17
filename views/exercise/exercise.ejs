@@ -13,124 +13,266 @@
 </head>
 
 <body>
-    <main class="exercise">
+    <main>
 
-        <ul class="sub-menu">
-            <li><a href="/exercises/muscles">Muscles</a></li>
-            <li><a href="/exercises/categories">Categories</a></li>
-            <li><a href="/exercises/equipments">Equipment</a></li>
+        <ul class="nav nav-tabs bg-secondary">
+            <li class="nav-item">
+                <a class="nav-link active" href="/exercises">Exercises</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/exercises/muscles">Muscles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/exercises/categories">Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/exercises/equipments">Equipment</a>
+            </li>
+
         </ul>
+
         <a href="/">Back to Home</a>
+        <div class="container">
+            <div class="table-container">
+            <table class="table table-hover table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Muscle</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(Object.keys(exerciseList).length){ %>
 
-        <div>
-            <% if(Object.keys(exerciseList).length){ %>
-            <ul>
-                <% for(let i = 0; i < exerciseList.length; ++i){ %>
-                <li>
-                    <%= exerciseList[i].name %>
-                    <%= exerciseList[i].muscle %>
-                </li>
-                <% } %>
-            </ul>
-            <% }else { %>
-            <p>No exercise found.</p>
+                    <% for(let i = 0; i < exerciseList.length; ++i){ %>
+                    <tr data-toggle="modal" data-target="#exerciseEdit" data-id="<%= exerciseList[i]._id %>">
+                        <td scope="row">
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                            <%= exerciseList[i].name %>
+                        </td>
+                        <td>
+                            <%= exerciseList[i].muscle.name %>
+                        </td>
+                        <td>
+                            <%= exerciseList[i].description %>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% } %>
 
-            <% } %>
+
+                </tbody>
+            </table>
+            <button type="button" class="create btn btn-primary bmd-btn-fab float-right" data-toggle="modal" data-target="#exerciseCreate">
+                <span class="oi oi-plus"></span>
+            </button>
         </div>
-        <button type="button" class="btn btn-primary bmd-btn-fab" data-toggle="modal" data-target="#exerciseCreate">
-            <span class="oi oi-plus"></span>
-        </button>
 
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="exerciseCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create exercise</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/exercises" method="post" id="exerciseCreateForm" class="container">
-                            <div class="row">
-                               <div class="col">
-                                <fieldset class="form-group bmd-form-group is-focused">
-                                    <label for="exerciseCreateFormName" class="bmd-label-floating">Exercise Name</label>
-                                    <input type="text" class="form-control" id="exerciseCreateFormName" name="name">
-                                    <span class="bmd-help">We'll never share your email with anyone else.</span>
-                                </fieldset>
-                            </div>
-                                <div class="col">
-                                <fieldset class="form-group bmd-form-group">
-                                    <label for="muscle" class="bmd-label-floating">Muscles Group</label>
-                                    <select name="muscle" class="form-control">
-                                        <option value="" selected disabled hidden>Choose here</option>
-                                        <% if(Object.keys(muscleList).length){ %>
+            <!-- Modal Create -->
+            <div class="modal fade" id="exerciseCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create exercise</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/exercises" method="post" id="exerciseCreateForm" class="container">
+                                <div class="row">
 
-                                        <% for(let i = 0; i < muscleList.length; ++i){ %>
-                                        <option value="<%= muscleList[i].id %>">
-                                            <%= muscleList[i].name %>
-                                        </option>
-                                        <% } %>
-
-                                        <% } %>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            </div>
-                            <div class="row">
-                                <fieldset class="form-group col">
-                                    <label for="category" class="bmd-label-floating">Category</label>
-                                    <select name="category" class="form-control">
-                                        <option value="" selected disabled hidden>Choose here</option>
-                                        <% if(Object.keys(categoryList).length){ %>
-
-                                        <% for(let i = 0; i < categoryList.length; ++i){ %>
-                                        <option value="<%= categoryList[i].id %>">
-                                            <%= categoryList[i].name %>
-                                        </option>
-                                        <% } %>
+                                    <fieldset class="form-group bmd-form-group col">
+                                        <label for="name" class="bmd-label-floating">Exercise Name</label>
+                                        <input type="text" class="form-control" name="name">
+                                        <span class="bmd-help">We'll never share your email with anyone else.</span>
+                                    </fieldset>
 
 
-                                        <% } %>
-                                    </select>
-                                </fieldset>
-                                <fieldset class="form-group col">
-                                    <label for="equipment" class="bmd-label-floating">Equipment</label>
-                                    <select name="equipment" class="form-control">
-                                        <option value="" selected disabled hidden>Choose here</option>
-                                        <% if(Object.keys(equipmentList).length){ %>
+                                    <fieldset class="form-group bmd-form-group col">
+                                        <label for="muscle" class="bmd-label-floating">Muscles Group</label>
+                                        <select name="muscle" class="form-control">
+                                            <option value="" selected disabled hidden></option>
+                                            <% if(Object.keys(muscleList).length){ %>
 
-                                        <% for(let i = 0; i < equipmentList.length; ++i){ %>
-                                        <option value="<%= equipmentList[i].id %>">
-                                            <%= equipmentList[i].name %>
-                                        </option>
-                                        <% } %>
+                                            <% for(let i = 0; i < muscleList.length; ++i){ %>
+                                            <option value="<%= muscleList[i].id %>">
+                                                <%= muscleList[i].name %>
+                                            </option>
+                                            <% } %>
+
+                                            <% } %>
+                                        </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="row">
+                                    <fieldset class="form-group bmd-form-group col">
+                                        <label for="category" class="bmd-label-floating">Category</label>
+                                        <select name="category" class="form-control">
+                                            <option value="" selected disabled hidden></option>
+                                            <% if(Object.keys(categoryList).length){ %>
+
+                                            <% for(let i = 0; i < categoryList.length; ++i){ %>
+                                            <option value="<%= categoryList[i].id %>">
+                                                <%= categoryList[i].name %>
+                                            </option>
+                                            <% } %>
 
 
-                                        <% } %>
-                                    </select>
-                                </fieldset>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" form="exerciseCreateForm" class="btn btn-primary">Save changes</button>
+                                            <% } %>
+                                        </select>
+                                    </fieldset>
+                                    <fieldset class="form-group bmd-form-group col">
+                                        <label for="equipment" class="bmd-label-floating">Equipment</label>
+                                        <select name="equipment" class="form-control">
+                                            <option value="" selected disabled hidden></option>
+                                            <% if(Object.keys(equipmentList).length){ %>
+
+                                            <% for(let i = 0; i < equipmentList.length; ++i){ %>
+                                            <option value="<%= equipmentList[i].id %>">
+                                                <%= equipmentList[i].name %>
+                                            </option>
+                                            <% } %>
+
+
+                                            <% } %>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <fieldset class="form-group bmd-form-group col">
+                                        <label for="description" class="bmd-label-floating">Example textarea</label>
+                                        <textarea class="form-control" name="description" rows="3"></textarea>
+                                    </fieldset>
+                                    <fieldset class="form-group bmd-form-group col">
+                                        <label for="exampleInputFile" class="bmd-label-static" hidden>File input</label>
+                                        <input type="file" class="form-control-file" name="image">
+                                        <small class="text-muted">Add an Image to Exercise.</small>
+                                    </fieldset>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" form="exerciseCreateForm" class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
+        <!-- Modal Edit -->
+        <div class="modal fade" id="exerciseEdit" tabindex="-1" role="dialog" aria-labelledby="exerciseEditLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exerciseEditLabel">Edit exercise</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/exercises/edit" method="post" id="exerciseEditForm" class="container">
+                        <div class="row">
+                            <input type="text" class="form-control" name="_id" hidden>
+                            <fieldset class="form-group bmd-form-group col">
+                                <label for="name" class="bmd-label-static">Exercise Name</label>
+                                <input type="text" class="form-control" name="name">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </fieldset>
 
 
+                            <fieldset class="form-group bmd-form-group col">
+                                <label for="muscle" class="bmd-label-static">Muscles Group</label>
+                                <select name="muscle" class="form-control">
+                                    <option value="" selected disabled hidden></option>
+                                    <% if(Object.keys(muscleList).length){ %>
+
+                                    <% for(let i = 0; i < muscleList.length; ++i){ %>
+                                    <option value="<%= muscleList[i].id %>">
+                                        <%= muscleList[i].name %>
+                                    </option>
+                                    <% } %>
+
+                                    <% } %>
+                                </select>
+                            </fieldset>
+                        </div>
+
+                        <div class="row">
+                            <fieldset class="form-group bmd-form-group col">
+                                <label for="category" class="bmd-label-static">Category</label>
+                                <select name="category" class="form-control">
+                                    <option value="" selected disabled hidden></option>
+                                    <% if(Object.keys(categoryList).length){ %>
+
+                                    <% for(let i = 0; i < categoryList.length; ++i){ %>
+                                    <option value="<%= categoryList[i].id %>">
+                                        <%= categoryList[i].name %>
+                                    </option>
+                                    <% } %>
+
+
+                                    <% } %>
+                                </select>
+                            </fieldset>
+                            <fieldset class="form-group bmd-form-group col">
+                                <label for="equipment" class="bmd-label-static">Equipment</label>
+                                <select name="equipment" class="form-control">
+                                    <option value="" selected disabled hidden></option>
+                                    <% if(Object.keys(equipmentList).length){ %>
+
+                                    <% for(let i = 0; i < equipmentList.length; ++i){ %>
+                                    <option value="<%= equipmentList[i].id %>">
+                                        <%= equipmentList[i].name %>
+                                    </option>
+                                    <% } %>
+
+
+                                    <% } %>
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div class="row">
+                            <fieldset class="form-group bmd-form-group col">
+                                <label for="description" class="bmd-label-static">Example textarea</label>
+                                <textarea class="form-control" name="description" rows="3"></textarea>
+                            </fieldset>
+                            <fieldset class="form-group bmd-form-group col">
+                                <label for="exampleInputFile" class="bmd-label-static" hidden>File input</label>
+                                <input type="file" class="form-control-file" name="image">
+                                <small class="text-muted">Add an Image to Exercise.</small>
+                            </fieldset>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" form="exerciseEditForm" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
     </main>
     <script src="/jquery.slim.min.js"></script>
     <script src="/popper.min.js"></script>
     <script src="/js/bootstrap-material-design.min.js"></script>
+    <script>
+        let exerciseArray = <%- JSON.stringify(exerciseList) %>; //ignore that
+    </script>
     <script src="/javascripts/mnd_main.js"></script>
 
 </body>

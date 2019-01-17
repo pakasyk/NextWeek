@@ -18,10 +18,6 @@ main {
   height: 100vh;
 }
 
-main.exercise {
-  position: relative;
-}
-
 .modal-dialog .modal-content .modal-body form#exerciseCreateForm input[type="text"] {
   line-height: 1.7;
 }
@@ -31,7 +27,11 @@ main.exercise {
   /*Bug: doesn't line up with default 15px column padding*/
 }
 
-.sub-menu li {
-  display: inline;
+.table-container table td {
+  cursor: pointer;
+}
+
+.table-container button.create {
+  margin-top: -36px;
 }
 /*# sourceMappingURL=mnd_style.css.map */

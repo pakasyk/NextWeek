@@ -16,10 +16,6 @@ body {
 main {
     width: 100%;
     height: 100vh;
-
-    &.exercise {
-        position: relative;
-    }
 }
 
 .modal-dialog {
@@ -39,10 +35,14 @@ main {
         }
     }
 }
-
-
-.sub-menu {
-    li {
-        display: inline;
+.table-container {
+    table {
+        td {
+            cursor: pointer;
+        }
+    }
+    button.create {
+        margin-top: -36px;
     }
 }
+
