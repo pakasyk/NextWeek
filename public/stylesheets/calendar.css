@@ -1,0 +1,62 @@
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), local("Roboto-Regular"),
+    url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf)
+      format("truetype");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: local("Roboto Medium"), local("Roboto-Medium"),
+    url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc9.ttf)
+      format("truetype");
+}
+
+.dhx_cal_tab.active {
+    border: 1px solid #3700B3;
+    background-color: #6200EE;
+}
+.dhx_cal_tab.active:hover {
+    background-color: white;
+    color: #3700B3;
+}
+
+.dhx_cal_tab {
+    border: 1px solid #3700B3;
+    color: #3700B3;
+}
+
+.dhx_cal_tab_first {
+    border-right: none;
+}
+
+.dhx_cal_tab:hover {
+    background-color: #6200EE;
+    color: white;
+}
+.dhx_cal_next_button,
+.dhx_cal_today_button {
+    color: #3700B3;
+}
+
+.dhx_title,
+.dhx_body,
+.dhx_cal_event,
+.dhx_cal_event_line {
+    background-color: #03DAC5 !important;
+}
+
+.dhx_cal_event_clear {
+    color: #03DAC5;
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .dhx_cal_date {
+    display: none;
+  }
+}
