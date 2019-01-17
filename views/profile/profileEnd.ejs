@@ -4,13 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/icons/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="/stylesheets/andrej.style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <title>Document</title>
 </head>
 <body>
+     <!-- <% if(Object.keys(userProfile).length){ %>
+        <% for(let i = 0; i < userProfile.length; ++i){ %>
+
+            <h1><%= userProfile[i].year %></h1>
+        <% } %>
+    <% } %> -->
+    <div class="main-container-2">
+        <div class="header">
+            <h1>Check Your Profile Info</h1>
+        </div>
+        <h2>User Useraitis</h2>
+        <h3>Main Info</h3>
+        <div class="check-main-info">   
+            <div class="photo">
+                <div class="photo-bg"></div>
+            </div>
+            <div class="main-info">
+                <span class="oi oi-people"></span><p>User Nick</p>
+                <p>2000-00-00</p>
+                <p>Gender: Other</p>
+                <p>Height: 180cm / Weight: 80kg</p>
+            </div>
+        </div>
+        <h3>Other Info</h3>
+        <div class="cheak-other-info">
+            <p> <span>Goal:</span><br>  Gain Weight</p>
+            <p> <span>Problem Area:</span><br>  Abs</p>
+            <p> <span>Alcohol:</span><br>  A Bit</p>
+            <p> <span>Smoke:</span><br>  No</p>
+            <p class="traumas"><span>Traumas:</span> <br> No traumas</p>
+        </div>
+        <div class="check-buttons">
+            <button>Save</button>
+            <button>Edit</button>
+        </div>
+    </div>
     
-    <h1>Veikia</h1>
-    <% if(userProfile){ %>
-        <h1><%= userProfile.nick %></h1>
-    <% } %>
+    
 </body>
 </html>

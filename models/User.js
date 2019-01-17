@@ -3,10 +3,11 @@ var Schema = mongoose.Schema;
 
 var ProfileSchema = new Schema({
     //Privalomi laukeliai
-    nick_Name: String,
+    nickName: String,// neveikia
     year: String,
     month: String,
     day: String,
+    gender: String,
     height: String,
     weight: String,
     photo: String, // Kaip su nuotraukom? Beja nuotrauka irgi neprivaloma

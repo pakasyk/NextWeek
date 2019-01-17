@@ -9,7 +9,8 @@ var ProfileController = require('../controllers/ProfileController');
 
 
 router.get('/createProfile', ProfileController.profile );
-router.post('/createProfile', urlencodedParser, ProfileController.createProfile )
+router.post('/createProfile', ProfileController.createProfile, ProfileController.profileEnd );
+
 router.get('/profileEnd', ProfileController.profileEnd)
 
 

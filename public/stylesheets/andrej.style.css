@@ -12,8 +12,8 @@ body{
     margin: 0 auto;
     background-color: white;
     opacity: 0.9;
-    
 }
+
 .header {
     background-color: #2ebcfe;
     opacity: 0.9;
@@ -133,4 +133,82 @@ body{
 }
 .right-bottom textarea:focus{
     border-bottom: 1px solid  rgba(46, 188, 254, 0.9); 
+}
+/* page Profile end styles  */
+.main-container-2 {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    opacity: 0.9;
+}
+.main-container-2 > h2 {
+    padding-left: 10px;
+}
+.main-container-2 > h3 {
+    margin-left: 10px;
+    border-bottom: 1px solid grey;
+    width: 40%;
+    padding-left: 5%;
+    color: grey;
+}
+.check-main-info, .cheak-other-info{
+    padding: 10px;
+    display: flex;
+}
+.photo{
+    width: 49%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+.photo-bg{
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background-color: grey; 
+}
+.main-info{
+    width: 49%;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: grey;
+    font-weight: bold;
+}
+.cheak-other-info{
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.cheak-other-info p {
+    margin-top: 0;
+    font-size: 18px;
+    color: grey;
+    width: 24%;
+}
+p.traumas{
+    width: 99%;
+}
+.cheak-other-info p span{
+    font-weight: bold;
+}
+.check-buttons {
+    display: flex;
+    justify-content: center;
+}
+.check-buttons button  {
+    padding: 1.5% 9%;
+    font-size: 20px;
+    margin-bottom: 12px;
+    background-color: #2ebcfe;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    border-radius: 10px;
+    opacity: 0.9;
+    border: none;
+    cursor: pointer;
+}
+.check-buttons button:nth-child(1){
+    margin-right: 3%;
+}
+.check-buttons button:nth-child(2){
+    margin-left: 3%;
 }
