@@ -3,11 +3,12 @@ var Profile = require('../models/User');
 profileController = {};
 
 
-
+//Profile main page
 profileController.profile = (req, res) => {
     res.render('profile/profile');
 };
 
+//Profile post data
 profileController.createProfile = (req, res, next) => {
     console.log('createProfile');
     
@@ -37,6 +38,7 @@ profileController.createProfile = (req, res, next) => {
 
 }
 
+//Profile cheked page
 profileController.profileEnd = (req, res) => {
     Profile.findById(req.params.id, (err, profile) => {
         if (err) throw err;
@@ -44,10 +46,12 @@ profileController.profileEnd = (req, res) => {
     })
 }
 
+//Change password page
 profileController.changePassword = (req, res) => {
     res.render('profile/newPassword');
 };
 
+//Rezult tracker page
 profileController.resultTracker = (req, res) => {
     res.render('profile/resultTracker');
 }
