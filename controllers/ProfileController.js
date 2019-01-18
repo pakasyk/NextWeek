@@ -12,7 +12,8 @@ profileController.createProfile = (req, res, next) => {
     console.log('createProfile');
     
     let newProfile = Profile({
-        nick: req.body.nickname,//neveikia
+      //modelName: req.body.htmlInputName  
+        nickname: req.body.nickname,
         year: req.body.year,
         month: req.body.month,
         day: req.body.day,
@@ -22,6 +23,7 @@ profileController.createProfile = (req, res, next) => {
         photo: req.body.photo,
         agree: req.body.check,
         goal: req.body.goal,
+        problemArea: req.body.problemArea,
         alcohol: req.body.alcohol,
         smoke: req.body.smoke,
         traumas: req.body.traumas,
@@ -30,30 +32,25 @@ profileController.createProfile = (req, res, next) => {
     newProfile.save((err, profile) => {
         if (err) throw err;
         console.log(profile);
-        next();
+        res.redirect('/profileEnd/' + profile._id);
     })
-    // let newProfile = req.body;
-
-    // let openDB = fs.readFileSync('./database/profileDb.json');
-    // let textDB = JSON.parse(openDB);
-
-    // textDB.push(newProfile);
-    // fs.writeFileSync('./database/profileDb.json', JSON.stringify(textDB));
-
-    // res.redirect('profile/profileEnd',{userProfile: profile} );
 
 }
 
 profileController.profileEnd = (req, res) => {
-    Profile.find({}, (err, profile) => {
+    Profile.findById(req.params.id, (err, profile) => {
         if (err) throw err;
-        res.render('profile/profileEnd', {userProfile: profile} )
+        res.render('profile/profileEnd', {userProfile: profile} );
     })
 }
 
 profileController.changePassword = (req, res) => {
-    res.render('profile/newPassword')
+    res.render('profile/newPassword');
 };
+
+profileController.resultTracker = (req, res) => {
+    res.render('profile/resultTracker');
+}
 
 
 module.exports = profileController;

@@ -11,8 +11,9 @@ var ProfileController = require('../controllers/ProfileController');
 router.get('/createProfile', ProfileController.profile );
 router.post('/createProfile', ProfileController.createProfile, ProfileController.profileEnd );
 
-router.get('/profileEnd', ProfileController.profileEnd)
+router.get('/profileEnd/:id', ProfileController.profileEnd)
 router.get('/newPassword', ProfileController.changePassword)
+router.get('/resultTracker', ProfileController.resultTracker )
 
 
 
