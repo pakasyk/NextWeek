@@ -1,38 +1,78 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Muscle</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mnd_style.css" />
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/css/bootstrap-material-design.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/icons/css/open-iconic-bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/stylesheets/mnd_style.css"
+    />
+  </head>
 
-<body>
+  <body>
+    <ul class="nav nav-tabs bg-secondary">
+      <li class="nav-item">
+        <a class="nav-link" href="/exercises">Exercises</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/exercises/muscles">Muscles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/exercises/categories">Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/exercises/equipments">Equipment</a>
+      </li>
+    </ul>
     <a href="/exercises">Back to Exercises</a>
-    <div>
+    <div class="container">
+      <div class="table-container">
         <form action="/exercises/muscles" method="post">
-            <label for="name">Muscle Goup</label>
-            <input type="text" placeholder="Muscle Name" name="name">
-            <button type="submit">Submit</button>
+          <label for="name">Muscle Goup</label>
+          <input type="text" placeholder="Muscle Name" name="name" />
+          <button type="submit">Submit</button>
         </form>
-    </div>
-    <div>
-        <% if(Object.keys(muscleList).length){ %>
-        <ul>
-            <% for(let i = 0; i < muscleList.length; ++i){ %>
-            <li>
-                <%= muscleList[i].name %>
-            </li>
+      </div>
+      <div class="table-container">
+        <table class="table table-hover table-light">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(Object.keys(muscleList).length){ %> 
+                <% for(let i = 0; i < muscleList.length; ++i){ %>
+            <tr
+              data-toggle="modal"
+              data-target="#muscleEdit"
+              data-id="<%= muscleList[i]._id %>"
+            >
+              <td scope="row"><%= i+1 %></td>
+              <td><%= muscleList[i].name %></td>
+            </tr>
+                <% } %>
             <% } %>
-        </ul>
-        <% }else { %>
-        <p>No muscle group found.</p>
-
-        <% } %>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>
