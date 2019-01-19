@@ -1,5 +1,5 @@
 /* Floating Label Fix */
-document.querySelector('#exerciseCreate .modal-content').addEventListener("click", event => {
+document.querySelector('#create .modal-content').addEventListener("click", event => {
 
     document.querySelectorAll('fieldset').forEach(element => {         
         element.classList.remove("is-focused");
@@ -14,7 +14,7 @@ document.querySelector('#exerciseCreate .modal-content').addEventListener("click
 
     }
 });
-document.querySelector('#exerciseEdit .modal-content').addEventListener("click", event => {
+document.querySelector('#edit .modal-content').addEventListener("click", event => {
 
     document.querySelectorAll('fieldset').forEach(element => {         
         element.classList.remove("is-focused");
@@ -26,23 +26,17 @@ document.querySelector('#exerciseEdit .modal-content').addEventListener("click",
     }
 });
 
+
 /* Edit Modal */
 document.querySelectorAll('td').forEach(element=>{
     element.addEventListener("click", event => {
         console.log(event.target.parentNode.dataset.id);
         let editID = event.target.parentNode.dataset.id;
-        const editForm = document.querySelector('#exerciseEditForm');
+        const editForm = document.querySelector('#editForm');
 
-        let selected = exerciseArray.filter(exercise => exercise._id == editID);
+        let selected = fromDBArray.filter(element => element._id == editID);
         console.log(editForm.querySelector('.form-control[name="name"]'));
         editForm.querySelector('.form-control[name="_id"]').value = selected[0]._id;
         editForm.querySelector('.form-control[name="name"]').value = selected[0].name;
-        editForm.querySelector('.form-control[name="muscle"]').value = selected[0].muscle._id;
-        editForm.querySelector('.form-control[name="category"]').value = selected[0].category._id;
-        editForm.querySelector('.form-control[name="equipment"]').value = selected[0].equipment._id;
-        editForm.querySelector('.form-control[name="description"]').value = selected[0].description;
-        
     });
 });
-
-console.log(exerciseArray);

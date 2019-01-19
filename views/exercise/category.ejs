@@ -3,53 +3,139 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Categories</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap-material-design.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/icons/css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mnd_style.css" />
 </head>
 
 <body>
-        <ul class="nav nav-tabs bg-secondary">
-                <li class="nav-item">
-                    <a class="nav-link" href="/exercises">Exercises</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/exercises/muscles">Muscles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/exercises/categories">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/exercises/equipments">Equipment</a>
-                </li>
+    <ul class="nav nav-tabs bg-secondary">
+        <li class="nav-item">
+            <a class="nav-link" href="/exercises">Exercises</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/exercises/muscles">Muscles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/exercises/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/exercises/equipments">Equipment</a>
+        </li>
+    </ul>
     
-            </ul>
-    <a href="/exercises">Back to Exercises</a>
-    <div>
-        <form action="/exercises/categories" method="post">
-            <label for="name">Category</label>
-            <input type="text" placeholder="Category" name="name">
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <div>
-        <% if(Object.keys(categoryList).length){ %>
-        <ul>
-            <% for(let i = 0; i < categoryList.length; ++i){ %>
-            <li>
-                <%= categoryList[i].name %>
-            </li>
-            <% } %>
-        </ul>
-        <% }else { %>
-        <p>No category found.</p>
 
-        <% } %>
-    </div>
 
+    <div class="container">
+        
+        <div class="table-container">
+            <table class="table table-hover table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(Object.keys(categoryList).length){ %>
+                    <% for(let i = 0; i < categoryList.length; ++i){ %>
+                    <tr data-toggle="modal" data-target="#edit" data-id="<%= categoryList[i]._id %>">
+                        <td scope="row">
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                            <%= categoryList[i].name %>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+            <button type="button" class="create btn btn-primary bmd-btn-fab float-right" data-toggle="modal"
+                data-target="#create">
+                <span class="oi oi-plus"></span>
+            </button>
+        </div>
+
+        <!-- Model Create -->
+        <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/exercises/categories" method="post" id="createForm" class="container">
+                            <div class="row">
+
+                                <fieldset class="form-group bmd-form-group col">
+                                    <label for="name" class="bmd-label-floating">Category Name</label>
+                                    <input type="text" class="form-control" name="name">
+                                    <span class="bmd-help">We'll never share your email with anyone else.</span>
+                                </fieldset>
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" form="createForm" class="btn btn-primary">Add new</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    <!-- Modal Edit -->
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editLabel">Edit category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/exercises/categories/edit" method="post" id="editForm" class="container">
+                        <div class="row">
+                            <input type="text" class="form-control" name="_id" hidden>
+                            <fieldset class="form-group bmd-form-group col">
+                                <label for="name" class="bmd-label-static">Category Name</label>
+                                <input type="text" class="form-control" name="name">
+                                <span class="bmd-help">We'll never share your email with anyone else.</span>
+                            </fieldset>                           
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" form="editForm" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        </div>
+    </div>
+    <script src="/jquery.slim.min.js"></script>
+    <script src="/popper.min.js"></script>
+    <script src="/js/bootstrap-material-design.min.js"></script>
+    <script>
+        let fromDBArray = <%- JSON.stringify(categoryList) %>; //ignore that
+    </script>
+    <script src="/javascripts/mnd_exercise_extra.js"></script>
 </body>
 
 </html>

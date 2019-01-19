@@ -51,49 +51,15 @@ exerciseController.onEdit = (req, res) => {
         console.log(exercise);
     });
 
-    // Exercise.where({
-    //     _id: req.body._id
-    // }).updateOne({
-    //     name: req.body.name,
-    //     muscle: req.body.muscle,
-    //     category: req.body.category,
-    //     equipment: req.body.equipment,
-    //     description: req.body.description,
-    //     status: true,
-    // });
     res.redirect('/exercises');
-
-
-
 }
 
 /* showing all exercises on exercises/exercises */
-exerciseController.showAll = async function (req, res) {
+exerciseController.showAll = function (req, res) {
     console.log("showAll");
-    let muscles;
-    let categories;
-    let equipments;
-    await Muscle.find({}, (err, muscleList) => {
-        if (err) throw err;
-        muscles = muscleList;
-    })
-    await Category.find({}, (err, categoryList) => {
-        if (err) throw err;
-        categories = categoryList;
-    })
-    await Equipment.find({}, (err, equipmentList) => {
-        if (err) throw err;
-        equipments = equipmentList;
-    })
+    
 
-    // await Exercise.find({}, (err, exercises)=>{ 
-    //     if (err) throw err; 
-    //     JSON.stringify(exercises.muscle);
-
-    //     res.render('exercise/exercise', {exerciseList: exercises, muscleList: muscles, categoryList: categories, equipmentList: equipments});
-    // })
-
-    await Exercise.find()
+    Exercise.find()
         .populate('muscle', 'name')
         .populate('category', 'name')
         .populate('equipment', 'name')
@@ -103,9 +69,7 @@ exerciseController.showAll = async function (req, res) {
 
             res.render('exercise/exercise', {
                 exerciseList: exercises,
-                muscleList: muscles,
-                categoryList: categories,
-                equipmentList: equipments
+               
             });
 
         })
@@ -131,6 +95,24 @@ muscleController.onCreate = (req, res, next) => {
 
 }
 
+/* on Edit */
+muscleController.onEdit = (req, res) => {
+    console.log("onEdit");
+    console.log(req.body);
+    
+    Muscle.findOneAndUpdate({
+        _id: req.body._id
+    }, {
+        name: req.body.name,
+       
+    }, (err, muscle)=>{
+        if (err) throw err;
+        console.log(muscle);
+    });
+
+    res.redirect('/exercises/muscles');
+}
+
 /* showing all muscles on exercises/muscles */
 muscleController.showAll = (req, res) => {
     console.log("showAll");
@@ -140,6 +122,16 @@ muscleController.showAll = (req, res) => {
             muscleList: muscles
         });
     })
+}
+
+muscleController.findAll = (req, res) => {
+    console.log("findAll");
+    Muscle.find()
+    .exec((err, muscles)=>{
+        if (err) throw err;
+        res.send(muscles);
+    })
+    
 }
 
 /* saving new equipment*/
@@ -155,6 +147,34 @@ equipmentController.onCreate = (req, res, next) => {
         next();
     })
 
+}
+
+/* on Edit */
+equipmentController.onEdit = (req, res) => {
+    console.log("onEdit");
+    console.log(req.body);
+    
+    Equipment.findOneAndUpdate({
+        _id: req.body._id
+    }, {
+        name: req.body.name,
+       
+    }, (err, equipment)=>{
+        if (err) throw err;
+        console.log(equipment);
+    });
+
+    res.redirect('/exercises/equipments');
+}
+
+equipmentController.findAll = (req, res) => {
+    console.log("findAll");
+    Equipment.find()
+    .exec((err, equipments)=>{
+        if (err) throw err;
+        res.send(equipments);
+    })
+    
 }
 
 /* showing all equipments on exercises/equipments */
@@ -183,6 +203,34 @@ categoryController.onCreate = (req, res, next) => {
         next();
     })
 
+}
+
+/* on Edit */
+categoryController.onEdit = (req, res) => {
+    console.log("onEdit");
+    console.log(req.body);
+    
+    Category.findOneAndUpdate({
+        _id: req.body._id
+    }, {
+        name: req.body.name,
+       
+    }, (err, category)=>{
+        if (err) throw err;
+        console.log(category);
+    });
+
+    res.redirect('/exercises/categories');
+}
+
+categoryController.findAll = (req, res) => {
+    console.log("findAll");
+    Category.find()
+    .exec((err, categories)=>{
+        if (err) throw err;
+        res.send(categories);
+    })
+    
 }
 
 /* showing all categories on exercises/categories */
