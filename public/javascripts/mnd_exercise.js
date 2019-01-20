@@ -1,6 +1,6 @@
 const fetchAsync = async (url) =>
     await (await fetch(url)).json();
-let dbdbarray = [];
+
 fetchAsync("/exercises/muscles/findAll")
 .then(data => {
     let selectElements = document.querySelectorAll('select[name="muscle"]');
@@ -64,7 +64,7 @@ fetchAsync("/exercises/equipments/findAll")
 
 
 /* Floating Label Fix */
-document.querySelector('#exerciseCreate .modal-content').addEventListener("click", event => {
+document.querySelector('#create .modal-content').addEventListener("click", event => {
 
     document.querySelectorAll('fieldset').forEach(element => {
         element.classList.remove("is-focused");
@@ -79,7 +79,7 @@ document.querySelector('#exerciseCreate .modal-content').addEventListener("click
 
     }
 });
-document.querySelector('#exerciseEdit .modal-content').addEventListener("click", event => {
+document.querySelector('#edit .modal-content').addEventListener("click", event => {
 
     document.querySelectorAll('fieldset').forEach(element => {
         element.classList.remove("is-focused");
@@ -96,10 +96,10 @@ document.querySelectorAll('td').forEach(element => {
     element.addEventListener("click", event => {
         // console.log(event.target.parentNode.dataset.id);
         let editID = event.target.parentNode.dataset.id;
-        const editForm = document.querySelector('#exerciseEditForm');
+        const editForm = document.querySelector('#editForm');
 
         let selected = exerciseArray.filter(exercise => exercise._id == editID);
-        // console.log(editForm.querySelector('.form-control[name="name"]'));
+       
         editForm.querySelector('.form-control[name="_id"]').value = selected[0]._id;
         editForm.querySelector('.form-control[name="name"]').value = selected[0].name;
         editForm.querySelector('.form-control[name="muscle"]').value = selected[0].muscle._id;

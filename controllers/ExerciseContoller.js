@@ -54,6 +54,16 @@ exerciseController.onEdit = (req, res) => {
     res.redirect('/exercises');
 }
 
+exerciseController.findAll = (req, res) => {
+    console.log("findAll");
+    Exercise.find()
+    .exec((err, exercises)=>{
+        if (err) throw err;
+        res.send(exercises);
+    })
+    
+}
+
 /* showing all exercises on exercises/exercises */
 exerciseController.showAll = function (req, res) {
     console.log("showAll");

@@ -34,4 +34,52 @@ main {
 .table-container button.create {
   margin-top: -36px;
 }
+
+.exerciseContainer {
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.exerciseContainer table {
+  margin-bottom: 0;
+}
+
+span.trash {
+  cursor: pointer;
+}
+
+span.trash:hover {
+  -webkit-animation: shake .3s infinite;
+          animation: shake .3s infinite;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+}
 /*# sourceMappingURL=mnd_style.css.map */

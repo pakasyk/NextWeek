@@ -46,3 +46,25 @@ main {
     }
 }
 
+.exerciseContainer {
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    
+    table {
+        margin-bottom: 0;
+    }
+}
+
+span.trash {
+    cursor: pointer;
+    
+    &:hover {
+        animation: shake .3s infinite;
+    }
+}
+
+@keyframes shake {
+    0% {transform: rotate(-10deg);}
+    50%{transform: rotate(10deg);}
+    100%{transform: rotate(-10deg);}
+}
