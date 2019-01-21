@@ -9,13 +9,9 @@ res.render("workout/workout");
 /* saving new workout*/
 workoutController.onCreate = (req, res, next) => {
     console.log("onCreate");
-    console.log(req.body);
-
-    let newWorkout = Workout({
-        name: req.body.name,
-        exercises: req.body.exercise,
-        sets: req.body.sets,
-        
+    let workoutas = JSON.parse(req.body.data);
+    let newWorkout = new Workout({
+        ...workoutas  
     })
     console.log("before.save");
     

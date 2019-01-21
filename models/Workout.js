@@ -5,11 +5,11 @@ const WorkoutSchema = new Schema({
     name: String, // Bench Press
     exercises: [
         {
-            id: String,
-            sets: [{
-                rep:Number,
-                weight:Number
-            }]
+            // id: String,
+            // sets: [{
+            //     rep:Number,
+            //     weight:Number
+            // }]
         }
     ],
 });

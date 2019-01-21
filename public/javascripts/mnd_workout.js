@@ -190,5 +190,5 @@ document.querySelector('button.addNew').addEventListener("click", () => {
     console.log(dataForDb);
     
     
-    postAjax('workouts', JSON.stringify(dataForDb), function(data){ console.log(data); });
+    postAjax('workouts', {data : JSON.stringify(dataForDb)}, function(data){ console.log(data); });
 });
