@@ -69,7 +69,7 @@ exerciseController.showAll = function (req, res) {
     console.log("showAll");
     
 
-    Exercise.find()
+    Exercise.find({status: true})
         .populate('muscle', 'name')
         .populate('category', 'name')
         .populate('equipment', 'name')
@@ -95,6 +95,7 @@ muscleController.onCreate = (req, res, next) => {
     console.log("onCreate");
     let newMuscle = Muscle({
         name: req.body.name,
+        status: true,
     })
 
     newMuscle.save((err, muscle) => {
@@ -126,7 +127,7 @@ muscleController.onEdit = (req, res) => {
 /* showing all muscles on exercises/muscles */
 muscleController.showAll = (req, res) => {
     console.log("showAll");
-    Muscle.find({}, (err, muscles) => {
+    Muscle.find({status: true}, (err, muscles) => {
         if (err) throw err;
         res.render('exercise/muscle', {
             muscleList: muscles
@@ -144,11 +145,30 @@ muscleController.findAll = (req, res) => {
     
 }
 
+muscleController.delete = (req, res) => {
+    console.log("delete");
+
+    Muscle.findOneAndUpdate({
+        _id: req.body._id
+    }, {
+        status: false,
+       
+    }, (err, muscle)=>{
+        if (err) throw err;
+        console.log(muscle);
+    });
+
+    res.redirect('/exercises/muscles');
+}
+    
+
+
 /* saving new equipment*/
 equipmentController.onCreate = (req, res, next) => {
     console.log("onCreate");
     let newEquipment = Equipment({
         name: req.body.name,
+        status: true,
     })
 
     newEquipment.save((err, equipment) => {
@@ -190,7 +210,7 @@ equipmentController.findAll = (req, res) => {
 /* showing all equipments on exercises/equipments */
 equipmentController.showAll = (req, res) => {
     console.log("showAll");
-    Equipment.find({}, (err, equipments) => {
+    Equipment.find({status: true}, (err, equipments) => {
         if (err) throw err;
         console.log("equipments: " + equipments);
         res.render('exercise/equipment', {
@@ -205,6 +225,7 @@ categoryController.onCreate = (req, res, next) => {
     console.log("onCreate");
     let newCategory = Category({
         name: req.body.name,
+        status: true,
     })
 
     newCategory.save((err, category) => {
@@ -246,7 +267,7 @@ categoryController.findAll = (req, res) => {
 /* showing all categories on exercises/categories */
 categoryController.showAll = (req, res) => {
     console.log("showAll");
-    Category.find({}, (err, categories) => {
+    Category.find({status: true}, (err, categories) => {
         if (err) throw err;
         res.render('exercise/category', {
             categoryList: categories
