@@ -9,6 +9,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var pagesRouter = require('./routes/pages');
 var exercisesRouter = require('./routes/exercises');
 var calendarRouter = require('./routes/calendar');
 var workoutsRouter = require('./routes/workouts');
@@ -73,6 +74,8 @@ app.use('/', usersRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/calendar', calendarRouter);
 app.use('/workouts', workoutsRouter);
+
+app.use('/', pagesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
