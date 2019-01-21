@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const ExerciseSchema = new Schema({
     name: String, // Bench Press
-    category: String, //from schema
+    category: { type: Schema.Types.ObjectId, ref: 'Category' }, //from schema
     muscle: { type: Schema.Types.ObjectId, ref: 'Muscle' }, //from schema
-    equipment: String, //from schema
+    equipment: { type: Schema.Types.ObjectId, ref: 'Equipment' }, //from schema
     image: String, //url
     status: Boolean, //true - active, false - deleted
     description: String,
@@ -19,14 +19,17 @@ const ExerciseSchema = new Schema({
 
 const ExerciseCategorySchema = new Schema({
     name: String, // Cardio, Streching, Lifting Weights
+    status: Boolean,
 });
 
 const ExerciseMuscleSchema = new Schema({
     name: String, // Chest, Legs, Back, Shoulders
+    status: Boolean,
 });
 
 const ExerciseEquipmentSchema = new Schema({
     name: String, // Dumbells, Barbell, Bodyweight
+    status: Boolean,
 });
 
 const Exercise = mongoose.model('Exercise', ExerciseSchema);
