@@ -45,7 +45,7 @@ calController.doEvent = function(req, res){
 	if (mode == "updated") {
         // console.log("updatinam>>>>>>>>>>>>>>>");
     Workoutevent.findById(sid, (err, eventFromDB)=>{
-        eventFromDB.text = data.type;
+        eventFromDB.text = data.text;
         eventFromDB.start_date = data.start_date;
         eventFromDB.end_date = data.end_date;
         eventFromDB.event_pid = data.event_pid;
@@ -62,7 +62,7 @@ calController.doEvent = function(req, res){
 		let newEvent = new Workoutevent({
             start_date: data.start_date,
             end_date: data.end_date,
-            text: data.type,
+            text: data.text,
             event_pid: data.event_pid,
             event_length: data.event_length,
             rec_type: data.rec_type
