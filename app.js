@@ -9,6 +9,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var pagesRouter = require('./routes/pages');
 var exercisesRouter = require('./routes/exercises');
 var calendarRouter = require('./routes/calendar');
 var workoutsRouter = require('./routes/workouts');
@@ -70,6 +71,7 @@ app.use(express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd')))
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', pagesRouter)
 app.use('/exercises', exercisesRouter);
 app.use('/calendar', calendarRouter);
 app.use('/workouts', workoutsRouter);
