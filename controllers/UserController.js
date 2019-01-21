@@ -19,7 +19,7 @@ userController.myProfile =  (req, res) => {
     }else{
         name = req.user.name
     }
-    User.findOne({name: name}, (err, userFromDB)=>{   
+    User.findOne({nickname: name}, (err, userFromDB)=>{   
         
       res.render('auth/profile', {user: userFromDB});
     })

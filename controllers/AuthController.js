@@ -34,7 +34,7 @@ authController.doRegister = (req, res)=>{
     User.register(new User(
         {
             username: req.body.username, //vatotojo el. pastas
-            name: req.body.name //vartotojo vardas
+            nickname: req.body.name //vartotojo vardas
         }), req.body.password, (error, user)=>{
             
             if(error){

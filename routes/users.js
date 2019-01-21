@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var users = require('../controllers/UserController');
 
-<<<<<<< HEAD
 var authGuard = require('../guards/auth-guard');
-=======
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -37,7 +35,6 @@ router.get('/newPassword', ProfileController.changePassword)
 router.get('/resultTracker', ProfileController.resultTracker )
 
 
->>>>>>> c94045399c0bd52bc7493a48dc3a1ba3aeacdb5b
 
 router.get('/profile/:name?', authGuard.canActivate, users.myProfile );
 router.get('/users', authGuard.canActivate , users.allUsers );
