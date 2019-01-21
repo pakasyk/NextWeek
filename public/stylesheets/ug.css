@@ -1,0 +1,57 @@
+body{
+    margin: 0 auto;
+    color: #000000;
+}
+
+header{
+    height: 170px;
+}
+
+header a{
+   margin-top: -30px;
+}
+
+.nav a{
+    color: #ffffff;
+    transition: all 1s ease-in-out
+}
+
+.nav  a:hover{
+    font-weight: bold;
+    color: #03DAC5;
+}
+
+.navi{
+    width: 15%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main {
+    height: 700px;
+    background-image: url("./main.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: -30px;
+}
+
+.main .jumbotron{
+
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.main .btn{ 
+   float: right;
+   margin-right: 350px;
+}
+
+.footerio-side{
+    margin-top: -100px;
+    color: #ffffff;
+}
+
+.footerio-apacia{
+    margin-top: 50px;
+}

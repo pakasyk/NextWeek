@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var users = require('../controllers/UserController');
 
+var authGuard = require('../guards/auth-guard');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -32,6 +34,13 @@ router.get('/profileEnd/:id', ProfileController.profileEnd)
 router.get('/newPassword', ProfileController.changePassword)
 router.get('/resultTracker', ProfileController.resultTracker )
 
+
+
+router.get('/profile/:name?', authGuard.canActivate, users.myProfile );
+router.get('/users', authGuard.canActivate , users.allUsers );
+
+router.get('/profile', users.myProfile );
+router.get('/users', users.allUsers);
 
 
 module.exports = router;
