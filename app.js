@@ -10,7 +10,11 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var exercisesRouter = require('./routes/exercises');
+<<<<<<< HEAD
 var calendarRouter = require('./routes/calendar');
+=======
+var workoutsRouter = require('./routes/workouts');
+>>>>>>> 1de47ee8f72b78ae5ce512ba09d2c4f33a117194
 
 var app = express();
 
@@ -51,11 +55,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules/bootstrap-material-design/dist')));
+app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+app.use(express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd')));
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/calendar', calendarRouter);
+app.use('/workouts', workoutsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

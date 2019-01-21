@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Workouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/icons/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mnd_style.css" />
+</head>
+
+<body>
+    <ul class="nav nav-tabs bg-secondary">
+        <li class="nav-item">
+            <a class="nav-link active" href="/exercises">Exercises</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/exercises/muscles">Muscles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/exercises/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/exercises/equipments">Equipment</a>
+        </li>
+
+    </ul>
+
+    <div class="container">
+        <form action="/workouts" method="post">
+        <input type="text" name="name" id="" placeholder="Name" value="WorkoutName">
+        <select name="exercise" id=""></select>
+        <input type="text" name="reps" id="" placeholder="reps">
+        <input type="text" name="weight" id="" placeholder="weight">
+        <button type="submit">submit</button>
+        </form>
+
+        <div class="table-container">
+            <table class="table table-hover table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                       <td scope="row"></td>
+                       <td></td>
+                   </tr>
+
+
+                </tbody>
+            </table>
+            <button type="button" class="create btn btn-primary bmd-btn-fab float-right" data-toggle="modal"
+                data-target="#create">
+                <span class="oi oi-plus"></span>
+            </button>
+        </div>
+
+
+
+        <!-- Modal Create -->
+        <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add workout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/exercises" method="post" id="createForm" class="container">
+                            <div class="row">
+
+                                <fieldset class="form-group bmd-form-group input-group-lg col">
+                                    <label for="name" class="bmd-label-floating">Workout Name</label>
+                                    <input type="text" class="form-control" name="name">
+                                    <span class="bmd-help">example: Chest Day I</span>
+                                </fieldset>
+
+
+                                
+                            </div>
+                            <!-- <div class="row">
+                                <fieldset class="form-group bmd-form-group col">
+                                    <label for="exercise" class="bmd-label-floating">Exercise</label>
+                                    <select name="exercise" class="form-control">
+                                       
+                                    </select>
+                                </fieldset>
+                            </div> -->
+
+                            
+                        </form>
+                        <button type="button" class="add btn btn-primary bmd-btn-fab bmd-btn-fab-sm float-right" data-toggle="tooltip" data-placement="top" title="Add Exercise">
+                        <span class="oi oi-plus" style="font-size: 14px;"></span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="addNew btn btn-primary">Add new</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/jquery.slim.min.js"></script>
+    <script src="/popper.min.js"></script>
+    <script src="/js/bootstrap-material-design.min.js"></script>
+    <script src="/javascripts/mnd_workout.js"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+</body>
+
+</html>
