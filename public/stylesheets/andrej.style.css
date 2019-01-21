@@ -286,7 +286,7 @@ p.traumas{
     align-items: center;
     border-bottom: 1px solid grey;
 }
-.bodyweight h3 {
+.bodyweight h3, .measurments form h3 {
     font-size: 22px;
     padding-left: 5%;
     color: grey;
@@ -303,7 +303,8 @@ p.traumas{
 .bodyWeightForm input:nth-child(2){
     width: 25%;
 }
-.bodyWeightForm input:nth-child(3){
+.bodyWeightForm button, .measurments form button {
+    padding: 5px 10px;
     background-color: #2ebcfe;
     color: rgba(255, 255, 255, 0.9);
     font-weight: bold;
@@ -312,4 +313,60 @@ p.traumas{
     border: none;
     cursor: pointer;
     font-size: 22px;
+}
+.main-container > table {
+    width: 100%;
+}
+.main-container > table tr:nth-child(1) {
+    background-color: grey;
+    
+}
+.main-container > table tr th{
+    font-size: 26px;
+    padding: 5px 0px;
+}
+.main-container > table tr td {
+    padding: 5px 0px 5px 5%;
+    font-size: 18px;
+    background-color: #d6d3d399;
+}
+.measurments {
+    margin-top: 5%;
+}
+.measurments-header {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+.exercise-header-inputs {
+    text-align: right;
+    padding-right: 5%;
+}
+.exercise-header-inputs input {
+    padding: 5px 10px;
+    font-size: 18px;
+    color: grey;
+}
+.exercise-header-inputs input:nth-child(2){
+    width: 25%;
+}
+.measurments form table{
+    width: 100%;
+}
+.measurments form table tr:nth-child(1){
+    background-color: grey;
+}
+.measurments form table tr th{
+    font-size: 26px;
+    padding: 5px 0px;
+}
+.measurments form table tr td {
+    padding: 5px 0px 5px 5%;
+    font-size: 18px;
+    background-color: #d6d3d399;
+}
+.measurments form button {
+
 }

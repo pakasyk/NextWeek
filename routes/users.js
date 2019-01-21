@@ -17,9 +17,16 @@ var storage = multer.diskStorage({
       cb(null, 'public/images/')
     },
     filename: (req, file, cb) => {
-      sharp('public/images/').resize(200, 200).toFile();
+      let filename = file.filename + '-' + Date.now() + '.jpg';
+      console.log(file)
+      sharp().resize(200, 200).toFile('images/new.jpg');
       
-      cb(null, file.filename + '-' + Date.now() + '.jpg')
+      sharp('public/images/' + filename)
+      .resize(200)
+      .toBuffer()
+      .then( data => console.log(data))
+
+      cb(null, filename)
       
     }
 });

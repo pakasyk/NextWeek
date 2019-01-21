@@ -22,7 +22,7 @@
             <form class="bodyWeightForm" action="/addWeight" method="POST">
                 <input name="weightDay" type="date">
                 <input name="bodyWeight" type="numer" placeholder="Bodyweight">
-                <input type="submit" value="Save">
+                <button type="submit">Save</button>
             </form>
         </div>
         <table>
@@ -39,7 +39,32 @@
                 <td>87kg</td>
             </tr>
         </table>
-     
+        <div class="measurments">
+            <form action="exerciseResult" method="POST">
+                <div class="measurments-header">
+                    <h3>Measurments</h3>
+                    <div class="exercise-header-inputs">
+                        <input type="date" name="exerciseDay">
+                        <input type="text" name="exercise" placeholder="Excercise">
+                        <button type="submit">Save</button>
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Set</th>
+                        <th>Weight</th>
+                        <th>Reps</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10kg</td>
+                        <td>12</td>
+                    </tr>
+                </table>
+                
+
+            </form>
+        </div>
 
     </div>
     
