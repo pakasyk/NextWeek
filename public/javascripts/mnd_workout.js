@@ -151,14 +151,22 @@ document.querySelector('button.addNew').addEventListener("click", () => {
     // document.querySelector('form#createForm input[name="name"]').value;
     let sets = [];
     let exercises = [];
+    let dataForDb = {};
     let name = document.querySelector('form#createForm input[name="name"]').value;
     console.log(document.querySelector('form#createForm input[name="name"]').value);
-    
+
+    dataForDb.name = document.querySelector('form#createForm input[name="name"]').value;
+    dataForDb.exercises = [];
+
+
     document.querySelectorAll('.exerciseContainer').forEach((container, index) => {
-        
+        dataForDb.exercises.push({});
         console.log(container.querySelector('.exerciseHeader').dataset.id);
         exercises.push(container.querySelector('.exerciseHeader').dataset.id);
+        dataForDb.exercises[index]._id = container.querySelector('.exerciseHeader').dataset.id;
+        dataForDb.exercises[index].sets = [];
         sets.push([]);
+        
         console.log("index: "+index);
         
         
@@ -168,7 +176,7 @@ document.querySelector('button.addNew').addEventListener("click", () => {
             // container.querySelectorAll('tr')[i].querySelector('input[name="weight"]').value;
             console.log(container.querySelectorAll('tr')[i].querySelector('input[name="reps"]').value);
             sets[index].push([container.querySelectorAll('tr')[i].querySelector('input[name="reps"]').value, container.querySelectorAll('tr')[i].querySelector('input[name="weight"]').value]);
-           
+            dataForDb.exercises[index].sets.push([{reps:container.querySelectorAll('tr')[i].querySelector('input[name="reps"]').value},{weight:container.querySelectorAll('tr')[i].querySelector('input[name="weight"]').value}]);
         }
 
         
@@ -177,5 +185,10 @@ document.querySelector('button.addNew').addEventListener("click", () => {
     })
     console.log(sets);
     console.log(exercises);
-    postAjax('workouts', { name: name, exercises: exercises, sets: sets }, function(data){ console.log(data); });
+    console.log("datafordb:");
+    
+    console.log(dataForDb);
+    
+    
+    postAjax('workouts', JSON.stringify(dataForDb), function(data){ console.log(data); });
 });
