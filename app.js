@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var exercisesRouter = require('./routes/exercises');
 var calendarRouter = require('./routes/calendar');
 var workoutsRouter = require('./routes/workouts');
+var pagesRouter = require('./routes/pages');
 
 var app = express();
 
@@ -70,6 +71,7 @@ app.use(express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd')))
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', pagesRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/calendar', calendarRouter);
 app.use('/workouts', workoutsRouter);
