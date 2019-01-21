@@ -4,6 +4,7 @@ authController = {};
 
 
 authController.home = function(req, res){
+    console.log(req.user)
    res.render('auth/index', {user: req.user});
 }
 
@@ -49,7 +50,6 @@ authController.doRegister = (req, res)=>{
 
 authController.doLogin = (req, res)=>{
     passport.authenticate('local')(req, res, function () {
-
         res.redirect('/');
       });
 }
