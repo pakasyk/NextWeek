@@ -47,6 +47,40 @@ profileController.profileEnd = (req, res) => {
     })
 }
 
+//Profile edit page
+profileController.profileEdit = (req, res) => {
+    Profile.findById(req.params.id, (err, userFromDB) =>{
+        res.render('profile/profileEdit', {editProfile: userFromDB});
+    })
+}
+
+//Profile edit post data
+profileController.onEdit = (req, res) => {
+    Profile.findById(req.params.id, (err, userFromDB) => {
+        userFromDB.nickname = req.body.nickname,
+        userFromDB.year = req.body.year,
+        userFromDB.month = req.body.month,
+        userFromDB.day = req.body.day,
+        userFromDB.gender = req.body.gender,
+        userFromDB.height = req.body.height,
+        userFromDB.weight = req.body.weight,
+        userFromDB.agree = req.body.check,
+        userFromDB.goal = req.body.goal,
+        userFromDB.problemArea = req.body.problemArea,
+        userFromDB.alcohol = req.body.alcohol,
+        userFromDB.smoke = req.body.smoke,
+        userFromDB.traumas = req.body.traumas;
+        if(req.file){
+            userFromDB.photo = '/images/' + req.file.filename;
+        }
+        userFromDB.save( (err, editProfile) => {
+            if (err) throw err;
+            res.render('profile/profileEnd' , {userProfile: editProfile})
+        })
+    })
+
+}
+
 //Change password page
 profileController.changePassword = (req, res) => {
     res.render('profile/newPassword');

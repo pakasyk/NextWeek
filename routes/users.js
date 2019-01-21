@@ -36,6 +36,8 @@ var upload = multer({storage: storage});
 router.get('/createProfile', ProfileController.profile );
 router.post('/createProfile', upload.single('photo'), ProfileController.createProfile );
 
+router.get('/profileEdit/:id', ProfileController.profileEdit)
+router.post('/profileEdit/:id', upload.single('photo'), ProfileController.onEdit )
 
 router.get('/profileEnd/:id', ProfileController.profileEnd)
 router.get('/newPassword', ProfileController.changePassword)

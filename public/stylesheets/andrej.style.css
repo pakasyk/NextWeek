@@ -218,6 +218,7 @@ p.traumas{
     border: none;
     cursor: pointer;
 }
+
 .check-buttons button:nth-child(1){
     margin-right: 3%;
 }

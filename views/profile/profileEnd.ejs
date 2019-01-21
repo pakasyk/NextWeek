@@ -40,8 +40,8 @@
             <p class="traumas"><span>Traumas:</span> <br> <%= userProfile.traumas %></p>
         </div>
         <div class="check-buttons">
-            <button>Save</button>
-            <button>Edit</button>
+            <button onclick="location.href='/profile'">Save</button>
+            <button onclick="location.href='/profileEdit/<%= userProfile.id %>'">Edit</button>
         </div>
     </div>
     
