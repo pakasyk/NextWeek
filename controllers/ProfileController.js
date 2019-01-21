@@ -12,6 +12,7 @@ profileController.profile = (req, res) => {
 profileController.createProfile = (req, res, next) => {
     console.log('createProfile');
     
+    //Sukuriam objeta kuri saugsim i mongo DB
     let newProfile = Profile({
       //modelName: req.body.htmlInputName  
         nickname: req.body.nickname,
@@ -21,7 +22,7 @@ profileController.createProfile = (req, res, next) => {
         gender: req.body.gender,
         height: req.body.height,
         weight: req.body.weight,
-        photo: req.body.photo,
+        photo: '/images/' + req.file.filename,
         agree: req.body.check,
         goal: req.body.goal,
         problemArea: req.body.problemArea,
@@ -29,7 +30,7 @@ profileController.createProfile = (req, res, next) => {
         smoke: req.body.smoke,
         traumas: req.body.traumas,
     })
-
+    //Cia saugo i mongo DB
     newProfile.save((err, profile) => {
         if (err) throw err;
         console.log(profile);
