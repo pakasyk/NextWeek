@@ -40,3 +40,31 @@ document.querySelectorAll('td').forEach(element=>{
         editForm.querySelector('.form-control[name="name"]').value = selected[0].name;
     });
 });
+
+let deleteRow = element => {
+    console.log("delete click");
+    console.log(element.parentNode.parentNode.dataset.id);
+
+
+    //$('#edit').modal('hide'); turetu veikti, bet pirmas trigerrinasi tr
+    postAjax('/exercises/muscles/delete', { _id: element.parentNode.parentNode.dataset.id }, function(data){ console.log(data); });
+    element.parentNode.parentNode.remove();
+}
+
+
+function postAjax(url, data, success) {
+    var params = typeof data == 'string' ? data : Object.keys(data).map(
+            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+        ).join('&');
+
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    xhr.open('POST', url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
+    };
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
+    return xhr;
+}
+

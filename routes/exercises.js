@@ -15,6 +15,7 @@ router.get('/muscles', muscleController.showAll);
 router.post('/muscles', muscleController.onCreate, muscleController.showAll);
 router.post('/muscles/edit', muscleController.onEdit);
 router.get('/muscles/findAll', muscleController.findAll);
+router.post('/muscles/delete', muscleController.delete);
 
 router.get('/equipments', equipmentController.showAll);
 router.post('/equipments', equipmentController.onCreate, equipmentController.showAll);

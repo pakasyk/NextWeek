@@ -1,0 +1,69 @@
+.navbar{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    padding:0px 10px;
+    background: #fff;
+    display: flex;
+}
+.spacer{
+    flex: 1 1 auto;
+}
+
+.logo, .menu-links{
+    display: inline-block;
+}
+
+.menu-links a{
+    margin: 0 10px;
+}
+
+.pagr{
+    font-size: 30px;
+}
+
+
+
+*{
+    box-sizing: border-box;
+}
+html, body{
+    margin: 0 auto;
+}
+body{
+    background: #f2f2f2;
+}
+a{
+    text-decoration: none;
+    color: rgb(59, 94, 250);
+}
+button{
+    padding: 10px 25px;
+    border-radius: 15px;
+    background:  rgb(59, 94, 250);
+    color: #fff;
+    border:1px solid blue;
+}
+input{
+    border:1px solid #ccc;
+}
+
+.navbar{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    padding:0px 10px;
+    background: #fff;
+    display: flex;
+}
+.spacer{
+    flex: 1 1 auto;
+}
+
+.logo, .menu-links{
+    display: inline-block;
+}
+
+.menu-links a{
+    margin: 0 10px;
+}

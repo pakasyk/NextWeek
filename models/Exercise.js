@@ -19,14 +19,17 @@ const ExerciseSchema = new Schema({
 
 const ExerciseCategorySchema = new Schema({
     name: String, // Cardio, Streching, Lifting Weights
+    status: Boolean,
 });
 
 const ExerciseMuscleSchema = new Schema({
     name: String, // Chest, Legs, Back, Shoulders
+    status: Boolean,
 });
 
 const ExerciseEquipmentSchema = new Schema({
     name: String, // Dumbells, Barbell, Bodyweight
+    status: Boolean,
 });
 
 const Exercise = mongoose.model('Exercise', ExerciseSchema);

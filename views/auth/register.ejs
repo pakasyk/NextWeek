@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/tautvis-register.css" />
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <div class="wrapper" style="background-image: url('images/dumbell.jpg');">
+        <div class="inner">
+            <div class="image-holder">
+                <img src="images/push.jpg" alt="">
+            </div>
+            <form action="/register" method="POST">
+                <h3>Registration Form</h3>
+                <div class="form-wrapper">
+                    <input type="text" placeholder="Fullname" name="name" class="form-control">
+                    <i class="line"></i>
+                </div>
+                <div class="form-wrapper">
+                    <input type="text" placeholder="Email Address" name="username" class="form-control">
+                    <i class="line-email"></i>
+                </div>
+                <div class="form-wrapper">
+                    <input type="password" placeholder="Password" name="password" id="pass1" class="form-control" onkeyup="checkPass(); return false;" >
+                    <i class="line"></i>
+                </div>
+                <div class="form-wrapper">
+                    <input type="password" placeholder="Confirm Password" name="repassword" id="pass2" class="form-control" onkeyup="checkPass(); return false;" >
+                    <i class="line"></i>
+                </div>
+                <div id="error-nwl"></div>
+                <button id="btnSubmit" onclick="return Validate()">Register</button> 
+                    <i class="line"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

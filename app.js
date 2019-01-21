@@ -34,17 +34,28 @@ mongoose.connect('mongodb://localhost/nextweek-db', { useNewUrlParser: true })
 .then(() => console.log('Success connect to Database'))
 .catch((error)=> console.log(error));
 
+
+
+app.use(session({
+  secret: 'ManoSlaptasKeyKurioPagalbaUzkoduosVartotojuSlaptazodziuIDB',
+  resave: false,
+  saveUninitialized: false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieParser());
 var User = require('./models/User');
 
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
@@ -58,7 +69,7 @@ app.use(express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd')))
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', usersRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/calendar', calendarRouter);
 app.use('/workouts', workoutsRouter);
