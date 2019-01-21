@@ -6,7 +6,7 @@
     <title>register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/tautvis-register.css" />
-    <script src="main.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <body>
     <div class="wrapper" style="background-image: url('images/dumbell.jpg');">
@@ -25,14 +25,15 @@
                     <i class="line-email"></i>
                 </div>
                 <div class="form-wrapper">
-                    <input type="password" placeholder="Password" name="password" class="form-control">
+                    <input type="password" placeholder="Password" name="password" id="pass1" class="form-control" onkeyup="checkPass(); return false;" >
                     <i class="line"></i>
                 </div>
                 <div class="form-wrapper">
-                    <input type="password" placeholder="Confirm Password" name="repassword" class="form-control">
+                    <input type="password" placeholder="Confirm Password" name="repassword" id="pass2" class="form-control" onkeyup="checkPass(); return false;" >
                     <i class="line"></i>
                 </div>
-                <button type="submit">Register</button> 
+                <div id="error-nwl"></div>
+                <button id="btnSubmit" onclick="return Validate()">Register</button> 
                     <i class="line"></i>
                 </button>
             </form>

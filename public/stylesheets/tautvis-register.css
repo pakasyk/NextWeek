@@ -1,4 +1,3 @@
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -13,14 +12,13 @@ body {
 input, textarea, select, button {
   font-family: "Poppins-Regular";
   color: #333;
-  font-size: 13px; }
+  font-size: 16px; }
 
 p, h1, h2, h3, h4, h5, h6, ul {
   margin: 0; }
 
 img {
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 ul {
   padding-left: 0;
@@ -110,75 +108,22 @@ select {
 
 button {
   border: none;
-  width: 164px;
-  height: 51px;
+  width: 114px;
+  height: 41px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
   background: #333;
   font-size: 15px;
   color: #fff;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s; }
-  button i {
+  }
+
+  button {
     margin-left: 10px;
     -webkit-transform: translateZ(0);
     transform: translateZ(0); }
-  button:hover i, button:focus i, button:active i {
-    -webkit-animation-name: hvr-icon-wobble-horizontal;
-    animation-name: hvr-icon-wobble-horizontal;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-timing-function: ease-in-out;
-    animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1; }
 
-@-webkit-keyframes hvr-icon-wobble-horizontal {
-  16.65% {
-    -webkit-transform: translateX(6px);
-    transform: translateX(6px); }
-  33.3% {
-    -webkit-transform: translateX(-5px);
-    transform: translateX(-5px); }
-  49.95% {
-    -webkit-transform: translateX(4px);
-    transform: translateX(4px); }
-  66.6% {
-    -webkit-transform: translateX(-2px);
-    transform: translateX(-2px); }
-  83.25% {
-    -webkit-transform: translateX(1px);
-    transform: translateX(1px); }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0); } }
-@keyframes hvr-icon-wobble-horizontal {
-  16.65% {
-    -webkit-transform: translateX(6px);
-    transform: translateX(6px); }
-  33.3% {
-    -webkit-transform: translateX(-5px);
-    transform: translateX(-5px); }
-  49.95% {
-    -webkit-transform: translateX(4px);
-    transform: translateX(4px); }
-  66.6% {
-    -webkit-transform: translateX(-2px);
-    transform: translateX(-2px); }
-  83.25% {
-    -webkit-transform: translateX(1px);
-    transform: translateX(1px); }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0); } }
+
 @media (max-width: 1199px) {
   .wrapper {
     background-position: right center; } }
@@ -199,4 +144,8 @@ button {
   button {
     margin-top: 60px; } }
 
-
+    .vaflioras{
+      margin-left: 20px;
+      font-size: 20px;
+      text-decoration: none;
+    }
