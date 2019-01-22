@@ -6,7 +6,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 /* GET workouts listing. */
 router.get('/', workoutController.showAll);
-router.post('/', workoutController.onCreate, workoutController.showAll);
+router.post('/', workoutController.onCreate);
 
 
 module.exports = router;

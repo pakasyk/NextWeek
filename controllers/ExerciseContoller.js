@@ -66,20 +66,7 @@ exerciseController.findAll = (req, res) => {
 
 /* showing all exercises on exercises/exercises */
 exerciseController.showAll = function (req, res) {
-    console.log("showAll");
-    let muscles;
-    Muscle.find({}, (err, muscleList)=>{ 
-        if (err) throw err; 
-        muscles = muscleList;
-    })
-    Exercise.find({}, (err, exercises)=>{ 
-        if (err) throw err; 
-        
-        JSON.stringify(exercises.muscle);
-        
-        res.render('exercise/exercise', {exerciseList: exercises, muscleList: muscles});
-    })
-    
+    console.log("showAll");    
 
     Exercise.find({status: true})
         .populate('muscle', 'name')
