@@ -13,6 +13,7 @@ var exercisesRouter = require('./routes/exercises');
 var calendarRouter = require('./routes/calendar');
 var workoutsRouter = require('./routes/workouts');
 var pagesRouter = require('./routes/pages');
+var chatRouter = require('./routes/chat');
 
 var app = express();
 
@@ -74,6 +75,7 @@ app.use('/', usersRouter);
 app.use('/', pagesRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/calendar', calendarRouter);
+app.use('/chat', chatRouter);
 app.use('/workouts', workoutsRouter);
 
 // catch 404 and forward to error handler
