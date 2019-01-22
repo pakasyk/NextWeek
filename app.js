@@ -35,14 +35,6 @@ mongoose.connect('mongodb://localhost/nextweek-db', { useNewUrlParser: true })
 .then(() => console.log('Success connect to Database'))
 .catch((error)=> console.log(error));
 
-
-
-app.use(session({
-  secret: 'ManoSlaptasKeyKurioPagalbaUzkoduosVartotojuSlaptazodziuIDB',
-  resave: false,
-  saveUninitialized: false
-}))
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
