@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
@@ -78,6 +78,12 @@ let genExerciseBlock = element => {
                        <td><input type="number" name="reps" min="1" max="1000" value="8"></td>
                        <td><input type="number" name="weight" min="0" max="999" value="50"></td>
                    </tr>
+                   <tfoot>
+                   <tr>
+                    <td colspan="3" class="text-secondary text-right">Total: <span class="total">50</span></td>
+                   </tr>
+                   </tfoot>
+                   
 
 
                 </tbody>
@@ -92,16 +98,12 @@ let genExerciseSet = element => {
   console.log(element.value);
   let tbody = element.parentNode.parentNode.parentNode;
   console.log(tbody);
-  let tempSets = "";
+  let total = 50;
   let fragment = document.createDocumentFragment();
 
   if (element.value > tbody.querySelectorAll("tr").length) {
     console.log("tr length" + tbody.querySelectorAll("tr").length);
-    for (
-      let i = 0;
-      i < element.value - tbody.querySelectorAll("tr").length;
-      i++
-    ) {
+    for (let i = 0; i < element.value - tbody.querySelectorAll("tr").length; i++) {
       let node = document.createElement("tr");
       node.innerHTML += `
                        <td scope="row"></td>
@@ -113,7 +115,9 @@ let genExerciseSet = element => {
                        }"></td>
                    `;
       fragment.appendChild(node);
+      total += 50;
     }
+    
     // tbody.innerHTML += tempSets;
     tbody.appendChild(fragment);
   } else if (element.value < tbody.querySelectorAll("tr").length) {
@@ -121,6 +125,8 @@ let genExerciseSet = element => {
       tbody.querySelectorAll("tr")[i - 1].remove();
     }
   }
+  
+  tbody.parentNode.querySelector('span.total').innerText = total;
 };
 
 let deleteExercise = element => {
@@ -130,19 +136,19 @@ let deleteExercise = element => {
 /* Add new Ajax Post requestas */
 function postAjax(url, data, success) {
   var params =
-    typeof data == "string"
-      ? data
-      : Object.keys(data)
-          .map(function(k) {
-            return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-          })
-          .join("&");
+    typeof data == "string" ?
+    data :
+    Object.keys(data)
+    .map(function (k) {
+      return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+    })
+    .join("&");
 
-  var xhr = window.XMLHttpRequest
-    ? new XMLHttpRequest()
-    : new ActiveXObject("Microsoft.XMLHTTP");
+  var xhr = window.XMLHttpRequest ?
+    new XMLHttpRequest() :
+    new ActiveXObject("Microsoft.XMLHTTP");
   xhr.open("POST", url);
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState > 3 && xhr.status == 200) {
       success(xhr.responseText);
     }
@@ -154,11 +160,9 @@ function postAjax(url, data, success) {
 }
 
 document.querySelector("button.addNew").addEventListener("click", () => {
-  // document.querySelector('form#createForm input[name="name"]').value;
-  let sets = [];
-  let exercises = [];
+
   let dataForDb = {};
-  let name = document.querySelector('form#createForm input[name="name"]').value;
+
   console.log(
     document.querySelector('form#createForm input[name="name"]').value
   );
@@ -188,40 +192,35 @@ document.querySelector("button.addNew").addEventListener("click", () => {
         // container.querySelectorAll('tr')[i].querySelector('input[name="weight"]').value;
         console.log(
           container
-            .querySelectorAll("tr")
-            [i].querySelector('input[name="reps"]').value
+          .querySelectorAll("tr")[i].querySelector('input[name="reps"]').value
         );
         sets[index].push([
           container
-            .querySelectorAll("tr")
-            [i].querySelector('input[name="reps"]').value,
+          .querySelectorAll("tr")[i].querySelector('input[name="reps"]').value,
           container
-            .querySelectorAll("tr")
-            [i].querySelector('input[name="weight"]').value
+          .querySelectorAll("tr")[i].querySelector('input[name="weight"]').value
         ]);
-        dataForDb.exercises[index].sets.push([
-          {
+        dataForDb.exercises[index].sets.push([{
             reps: container
-              .querySelectorAll("tr")
-              [i].querySelector('input[name="reps"]').value
+              .querySelectorAll("tr")[i].querySelector('input[name="reps"]').value
           },
           {
             weight: container
-              .querySelectorAll("tr")
-              [i].querySelector('input[name="weight"]').value
+              .querySelectorAll("tr")[i].querySelector('input[name="weight"]').value
           }
         ]);
       }
     });
-  console.log(sets);
-  console.log(exercises);
+
   console.log("datafordb:");
 
   console.log(dataForDb);
 
-  postAjax("workouts", { data: JSON.stringify(dataForDb) }, function(data) {
-      location.reload(true);
-      console.log("callback");
-      
+  postAjax("workouts", {
+    data: JSON.stringify(dataForDb)
+  }, function (data) {
+    location.reload(true);
+    console.log("callback");
+
   });
 });
