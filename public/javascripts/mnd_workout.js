@@ -165,6 +165,7 @@ document.querySelector('button.addNew').addEventListener("click", () => {
         exercises.push(container.querySelector('.exerciseHeader').dataset.id);
         dataForDb.exercises[index]._id = container.querySelector('.exerciseHeader').dataset.id;
         dataForDb.exercises[index].sets = [];
+        dataForDb.status = true;
         sets.push([]);
         
         console.log("index: "+index);
@@ -190,5 +191,11 @@ document.querySelector('button.addNew').addEventListener("click", () => {
     console.log(dataForDb);
     
     
-    postAjax('workouts', {data : JSON.stringify(dataForDb)}, function(data){ console.log(data); });
+    postAjax('workouts', {data : JSON.stringify(dataForDb)}, function(data){    // $('#create').modal('hide');
+       
+        console.log(data);
+        
+       
+    
+    });
 });

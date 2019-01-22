@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const WorkoutSchema = new Schema({
     name: String, // Bench Press
+    
     exercises: [
-        {
+        { 
             // id: String,
             // sets: [{
             //     rep:Number,
@@ -12,6 +13,7 @@ const WorkoutSchema = new Schema({
             // }]
         }
     ],
+    status: Boolean,
 });
 
 

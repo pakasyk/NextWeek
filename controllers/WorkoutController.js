@@ -3,7 +3,10 @@ let workoutController = {};
 
 
 workoutController.showAll = (req, res) => {
+    console.log("showAll");
+    
 res.render("workout/workout");
+
 }
 
 /* saving new workout*/
@@ -18,7 +21,7 @@ workoutController.onCreate = (req, res, next) => {
     newWorkout.save((err, workouts) => {
         if (err) throw err;
         console.log(workouts);
-        next();
+       
     })
 
 }
