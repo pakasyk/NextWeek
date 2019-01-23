@@ -6,6 +6,6 @@ var chatController = require('../controllers/ChatController');
 
 router.get("/", chatController.chatHome);
 // router.get("/", chatController.loadData);
-// router.post("/data", calController.doEvent);
+router.post("/send", chatController.sendMessage);
 
 module.exports = router;
