@@ -1,5 +1,6 @@
 var fs = require('fs');
-var Profile = require('../models/User');
+var Profile = require('../models/User').User;
+
 profileController = {};
 
 
@@ -10,7 +11,6 @@ profileController.profile = (req, res) => {
 
 //Profile post data
 profileController.createProfile = (req, res, next) => {
-    console.log('createProfile');
     
     //Sukuriam objeta kuri saugsim i mongo DB
     let newProfile = Profile({
@@ -50,6 +50,7 @@ profileController.profileEnd = (req, res) => {
 //Profile edit page
 profileController.profileEdit = (req, res) => {
     Profile.findById(req.params.id, (err, userFromDB) =>{
+        if (err) throw err;
         res.render('profile/profileEdit', {editProfile: userFromDB});
     })
 }
@@ -86,10 +87,7 @@ profileController.changePassword = (req, res) => {
     res.render('profile/newPassword');
 };
 
-//Rezult tracker page
-profileController.resultTracker = (req, res) => {
-    res.render('profile/resultTracker');
-}
+
 
 
 module.exports = profileController;

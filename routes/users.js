@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var ProfileController = require('../controllers/ProfileController');
-
+var ResultController = require('../controllers/ResultController');
 
 var multer = require('multer');
 var sharp = require('sharp');
@@ -41,9 +41,10 @@ router.post('/profileEdit/:id', upload.single('photo'), ProfileController.onEdit
 
 router.get('/profileEnd/:id', ProfileController.profileEnd)
 router.get('/newPassword', ProfileController.changePassword)
-router.get('/resultTracker', ProfileController.resultTracker )
 
-
+router.get('/resultTracker', authGuard.canActivate, urlencodedParser, ProfileController.resultTracker )
+router.post('/addWeight', authGuard.canActivate, urlencodedParser, ResultController.addWeight)
+router.post('/centimetrsResult', authGuard.canActivate, urlencodedParser, ResultController.addMeasurments )
 
 router.get('/profile/:name?', authGuard.canActivate, users.myProfile );
 router.get('/users', authGuard.canActivate , users.allUsers );

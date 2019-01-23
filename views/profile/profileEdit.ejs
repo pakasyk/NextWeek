@@ -15,7 +15,7 @@
         </div>
         <h2>Hello User Useraitis</h2>
         <p><a href="/newPassword"> Change password</a></p>
-        <form class="profile-form" action="/profileEdit/<%= editProfile.id%>" method="post" enctype="multipart/form-data">
+        <form name="profileFormEdit" class="profile-form" action="/profileEdit/<%= editProfile.id%>" method="post" enctype="multipart/form-data" >
             <div class="left-form">
                 
                 <label for="nickName">Yours Nick Name:</label><br>
@@ -43,7 +43,7 @@
                 <label for="photo">Yours Photo:</label><br>
                 <input type="file" name="photo" value="<%= editProfile.photo %>" id="photo"><br>
                 <button type="submit" class="button">Save</button>
-                <input type="checkbox" name="agree" id="check" value="check"><span>I agree to the Terms of Use</span>
+                <input type="checkbox" name="agree" id="check" required value="check"><span>I agree to the Terms of Use</span>
                 
              </div>
              <div class="right-form">

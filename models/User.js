@@ -28,9 +28,22 @@ var UserSchema = new Schema({
 
 })
 
+var BodyWeightSchema = new Schema({
+    user_id: String,
+    weightDay: Date,
+    bodyWeight: String,
+})
+
+var CentimetrsResult = new Schema({
+    user_id: String,
+    measurmentsDay: Date,
+    centimetrs: String,
+})
 
 UserSchema.plugin(passportLocalMongoose);
 
 var User =  mongoose.model('User', UserSchema);
+var BodyWeight = mongoose.model('BodyWeight', BodyWeightSchema)
+var Measurments = mongoose.model('measurments',CentimetrsResult )
 
-module.exports = User;
+module.exports =  { User , BodyWeight, Measurments } ;

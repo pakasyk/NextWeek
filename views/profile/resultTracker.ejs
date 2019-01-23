@@ -19,54 +19,53 @@
         </div>
         <div class="bodyweight">
             <h3>Bodyweight</h3>
-            <form class="bodyWeightForm" action="/addWeight" method="POST">
+            <form class="bodyWeightForm hiddenForm" action="/addWeight" method="POST">
                 <input name="weightDay" type="date">
                 <input name="bodyWeight" type="numer" placeholder="Bodyweight">
                 <button type="submit">Save</button>
             </form>
+            <button type="submit" onclick="openWeightForm()">Add</button>
         </div>
         <table>
             <tr>
                 <th>Date</th>
                 <th>Weight</th>
             </tr>
-            <tr>
-                <td>10.11.2018</td>
-                <td>95kg</td>
-            </tr>
-            <tr>
-                <td>15.12.2018</td>
-                <td>87kg</td>
-            </tr>
+            <% for(let i = 0; i < userResult.length; ++i ) { %>
+                <tr>
+                    <td class="date"> <%- new Date(userResult[i].weightDay).toISOString().split('T')[0] %> </td>
+                    <td><%= userResult[i].bodyWeight %>kg</td>
+                </tr>
+            <% } %> 
         </table>
         <div class="measurments">
-            <form action="exerciseResult" method="POST">
-                <div class="measurments-header">
-                    <h3>Measurments</h3>
+            <div class="measurments-header">
+                <h3>Measurments</h3>
+                    <form class="measurmentsForm hiddenForm" action="/centimetrsResult" method="POST">
                     <div class="exercise-header-inputs">
-                        <input type="date" name="exerciseDay">
-                        <input type="text" name="exercise" placeholder="Excercise">
+                        <input type="date" name="measurmentsDay">
+                        <input type="text" name="centimetrs" placeholder="cm">
                         <button type="submit">Save</button>
                     </div>
+                </form>
+                <button type="submit" onclick="openMeasForm()" >Add</button>
                 </div>
                 <table>
-                    <tr>
-                        <th>Set</th>
-                        <th>Weight</th>
-                        <th>Reps</th>
+                    <tr>              
+                        <th>Date</th>
+                        <th>Centimetrs</th>
                     </tr>
                     <tr>
-                        <td>1</td>
                         <td>10kg</td>
                         <td>12</td>
                     </tr>
                 </table>
                 
 
-            </form>
+            
         </div>
 
     </div>
-    
+    <script src="/javascripts/profile_js.js"></script>
 </body>
 </html>

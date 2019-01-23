@@ -287,7 +287,7 @@ p.traumas{
     align-items: center;
     border-bottom: 1px solid grey;
 }
-.bodyweight h3, .measurments form h3 {
+.bodyweight h3, .measurments  h3 {
     font-size: 22px;
     padding-left: 5%;
     color: grey;
@@ -304,7 +304,10 @@ p.traumas{
 .bodyWeightForm input:nth-child(2){
     width: 25%;
 }
-.bodyWeightForm button, .measurments form button {
+.hiddenForm {
+    display: none;
+}
+.bodyweight button, .measurments  button {
     padding: 5px 10px;
     background-color: #2ebcfe;
     color: rgba(255, 255, 255, 0.9);
@@ -325,11 +328,13 @@ p.traumas{
 .main-container > table tr th{
     font-size: 26px;
     padding: 5px 0px;
+    width: 50%;
 }
-.main-container > table tr td {
+.main-container  table tr td {
     padding: 5px 0px 5px 5%;
     font-size: 18px;
     background-color: #d6d3d399;
+    width: 50%;
 }
 .measurments {
     margin-top: 5%;
@@ -353,17 +358,17 @@ p.traumas{
 .exercise-header-inputs input:nth-child(2){
     width: 25%;
 }
-.measurments form table{
+.measurments  table{
     width: 100%;
 }
-.measurments form table tr:nth-child(1){
+.measurments  table tr:nth-child(1){
     background-color: grey;
 }
-.measurments form table tr th{
+.measurments  table tr th{
     font-size: 26px;
     padding: 5px 0px;
 }
-.measurments form table tr td {
+.measurments  table tr td {
     padding: 5px 0px 5px 5%;
     font-size: 18px;
     background-color: #d6d3d399;
