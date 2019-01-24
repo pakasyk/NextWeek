@@ -1,107 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Chat</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap-material-design.min.css" /> 
-    <link rel="stylesheet" type="text/css" media="screen" href="/icons/css/open-iconic-bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/css/bootstrap-material-design.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/icons/css/open-iconic-bootstrap.min.css"
+    />
     <link rel="stylesheet" href="/stylesheets/chat.css" />
-</head>
-<body>
-        <div class="card rare-wind-gradient chat-room">
-                <div class="card-body">
-              
-                  <!-- Grid row -->
-                  <div class="row px-lg-2 px-2">
-              
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-xl-2 px-0">
-              
-                      <h6 class="font-weight-bold mb-3 text-center text-lg-left">Member</h6>
-                      <div class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue">
-                        <ul class="list-unstyled friend-list">
-                                <% userList.map( user =>{ %>                           
-                                    <li class="active grey lighten-3 p-2" onclick="selectUser('<% user._id %>')">
-                                      <a href="#" class="d-flex justify-content-between">
-                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
-                                        <div class="text-small">
-                                          <strong><%= user.nickname %></strong>
-                                          <p class="last-message text-muted">Hello, Are you there?</p>
-                                        </div>
-                                      </a>
-                                    </li>
-                                    <% }) %>
-
-                        </ul>
-                      </div>
-              
+  </head>
+  <body>
+    <div class="card rare-wind-gradient chat-room">
+      <div class="card-body">
+        <!-- Grid row -->
+        <div class="row px-lg-2 px-2">
+          <!-- Grid column -->
+          <!-- Members Start -->
+          <div class="col-md-6 col-xl-6 px-0">
+            <h6 class="font-weight-bold mb-3 text-center text-lg-left">
+              Members
+            </h6>
+            <div
+              class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue"
+            >
+              <ul class="list-unstyled friend-list">
+                <% userList.map( user =>{ %>
+                <li
+                  class="active grey lighten-3 p-2"
+                  onclick="selectUser('<% user._id %>')"
+                >
+                  <a
+                    href="/chat/<%= user.id %>"
+                    class="d-flex justify-content-between"
+                  >
+                    <img
+                      src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg"
+                      alt="avatar"
+                      class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1"
+                    />
+                    <div class="text-small">
+                      <strong><%= user.nickname %></strong>
+                      <p class="last-message text-muted">
+                        Hello, Are you there?
+                      </p>
                     </div>
-                    <!-- Grid column -->
-              
-                    <!-- Grid column -->
-                    <div class="col-md-9 col-xl-10 pl-md-3 px-lg-auto px-0">
-              
-                      <div class="chat-message">
-              
-                        <ul class="list-unstyled chat-1 scrollbar-light-blue">
-                          <li class="d-flex justify-content-between mb-4">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
-                            <div class="chat-body white p-3 ml-2 z-depth-1">
-                              <div class="header">
-                                <strong class="primary-font">Brad Pitt</strong>
-                                <small class="pull-right text-muted"><i class="far fa-clock"></i> 12 mins ago</small>
-                              </div>
-                              <hr class="w-100">
-                              <p class="mb-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua.
-                              </p>
-                            </div>
-                          </li>
-                          <li class="d-flex justify-content-between mb-4">
-                            <div class="chat-body white p-3 z-depth-1">
-                              <div class="header">
-                                <strong class="primary-font">Lara Croft</strong>
-                                <small class="pull-right text-muted"><i class="far fa-clock"></i> 13 mins ago</small>
-                              </div>
-                              <hr class="w-100">
-                              <p class="mb-0">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium.
-                              </p>
-                            </div>
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="avatar" class="avatar rounded-circle mr-0 ml-3 z-depth-1">
-                          </li>
-                         
-                        </ul>
-                        <form action="/chat/send" method="POST">
-                            <div class="white">
-                                <div class="form-group basic-textarea">
-                                    <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your message here..." name="composedMessage"></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-outline-pink btn-rounded btn-sm waves-effect waves-dark float-right">Send</button>
-                        </form>
-              
-                      </div>
-              
+                  </a>
+                </li>
+                <% }) %>
+              </ul>
+            </div>
+          </div>
+          <!-- Members End -->
+          <!-- Conversations Start -->
+          <div class="col-md-6 col-xl-6 px-0">
+            <h6 class="font-weight-bold mb-3 text-center text-lg-left">
+              Conversations
+            </h6>
+            <div
+              class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue"
+            >
+              <ul class="list-unstyled friend-list">
+                <% conversations.map( conversation =>{ %>
+                <li
+                  class="active grey lighten-3 p-2"
+                >
+                  <a
+                    href="/chat/<%= conversation[0].conversationId  %>"
+                    class="d-flex justify-content-between"
+                  >
+                    <img
+                      src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg"
+                      alt="avatar"
+                      class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1"
+                    />
+                    <div class="text-small">
+                      <strong><%= conversation[0].conversationId %></strong>
+                      <p class="last-message text-muted">
+                            <%= conversation[0].body %>
+                      </p>
                     </div>
-                    <!-- Grid column -->
-              
-                  </div>
-                  <!-- Grid row -->
-              
-                </div>
-              </div>
-              <script>
-               function selectUser(user) {
-                    req.params.recipient = user;
-               }   
-              
-              </script>
+                  </a>
+                </li>
+                <% }) %>
+              </ul>
+            </div>
+          </div>
+          <!-- Conversations End -->
+          <!-- Grid column -->
 
-    
-</body>
+          <!-- Grid column -->
+         
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </div>
+   
+  </body>
 </html>
