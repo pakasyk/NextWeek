@@ -14,11 +14,7 @@ var exercisesRouter = require('./routes/exercises');
 var calendarRouter = require('./routes/calendar');
 var workoutsRouter = require('./routes/workouts');
 var pagesRouter = require('./routes/pages');
-<<<<<<< HEAD
-
-=======
 var chatRouter = require('./routes/chat');
->>>>>>> 8a3c923753eef1951b373e4c613baaa8b8b7e828
 
 var app = express();
 
