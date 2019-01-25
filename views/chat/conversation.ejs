@@ -35,12 +35,7 @@
             <div class="chat-message">
               <ul class="list-unstyled chat-1 scrollbar-light-blue">
                     <% conversation.map( (message, i) =>{ %>
-                <li class="d-flex justify-content-between mb-4">
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg"
-                    alt="avatar"
-                    class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1"
-                  />
+                <li class="d-flex justify-content-<%= (message.author.nickname == user.nickname)?'end':'start' %> mb-4">
                   <div class="chat-body white p-3 ml-2 z-depth-1">
                     <div class="header">
                       <strong class="primary-font"><%= message.author.nickname %></strong>

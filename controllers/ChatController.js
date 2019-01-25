@@ -7,13 +7,15 @@ var chatController = {};
 chatController.chatHome = (req, res, next) => {
   // Only return one message from each conversation to display as snippet
   Conversation.find({ participants: req.user._id })
-    .select("_id")
+	.select("_id participants")
+	.populate('participants')
     .exec(function(err, conversations) {
       if (err) {
         res.send({ error: err });
         return next(err);
 	  }
-	  console.log('conversations >>>>', conversations);
+	  console.log('conversations >>>>', conversations[0].participants[0]);
+	
 
       // Set up empty array to hold conversations + most recent message
       let fullConversations = [];
@@ -55,7 +57,8 @@ chatController.chatHome = (req, res, next) => {
                   userList: userList,
                   user: req.user,
                   selectedUserID: selectedUserID,
-                  conversations: fullConversations
+				  conversations: fullConversations,
+				  conversationList : conversations				  
                 });
               });
             }
@@ -128,7 +131,7 @@ chatController.loadOne = (req, res, next) => {
 		  	diffArray.push(minutes);
 	  })
 	  console.log("essagessssss",diffArray)
-      res.render('chat/conversation',{ conversation: messages, convID: req.params.id, diffArray: diffArray });
+      res.render('chat/conversation',{ conversation: messages, convID: req.params.id, diffArray: diffArray, user: req.user });
     });
 }
 

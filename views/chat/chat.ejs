@@ -51,7 +51,7 @@
                     <div class="text-small">
                       <strong><%= user.nickname %></strong>
                       <p class="last-message text-muted">
-                        Hello, Are you there?
+                        Say, Hi!
                       </p>
                     </div>
                   </a>
@@ -70,7 +70,7 @@
               class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue"
             >
               <ul class="list-unstyled friend-list">
-                <% conversations.map( conversation =>{ %>
+                <% conversations.map( (conversation, i) =>{ %>
                 <li
                   class="active grey lighten-3 p-2"
                 >
@@ -84,7 +84,7 @@
                       class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1"
                     />
                     <div class="text-small">
-                      <strong><%= conversation[0].conversationId %></strong>
+                      <strong><%= (conversationList[i].participants[0].nickname == user.nickname)?conversationList[i].participants[1].nickname:conversationList[i].participants[0].nickname %></strong>
                       <p class="last-message text-muted">
                             <%= conversation[0].body %>
                       </p>
