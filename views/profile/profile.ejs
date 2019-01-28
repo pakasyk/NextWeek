@@ -13,38 +13,39 @@
         <div class="header">
             <h1>Create Profile Page</h1>
         </div>
-        <h2>Hello User Useraitis</h2>
+        <h2>Hello <%= user.username %></h2>
         <p><a href="/newPassword"> Change password</a></p>
-        <form name="profileForm" class="profile-form" action="/createProfile" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form name="profileForm"  class="profile-form" action="/createProfile" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" >
             <div class="left-form">
                 
-                <label for="nickName">Yours Nick Name:</label><br>
-                <input type="text" name="nickname" id="nickName" placeholder="Nick name"  ><br>
+                <label for="nickName">Your Full Name:</label><br>
+                <input  onfocus="inputFocus(this)" onfocusout="inputFocusOut(this)" type="text" name="nickname" id="nickName" placeholder="Full name"  ><br>
 
                 <label for="dateOfBirth">Date of Birth:</label><br>
-                <input type="number" name="year" id="years" min="1919" max="2005" placeholder="2000"><input id="month" type="number" name="month" min="1" max="12" placeholder="07"><input id="day" type="number" name="day" min="1" max="31" placeholder="19"> <br>
+                <input onfocus="inputFocus(this)" onfocusout="inputFocusOut(this)" type="number" name="year" id="years" min="1919" max="2005" placeholder="2000"><input onfocus="inputFocus(this)" onfocusout="inputFocusOut(this)" id="month" type="number" name="month" min="1" max="12" placeholder="07"><input onfocus="inputFocus(this)" onfocusout="inputFocusOut(this)" id="day" type="number" name="day" min="1" max="31" placeholder="19"> <br>
 
                 <label for="gender">Gender:</label><br>
-                <input type="radio" id="gender" name="gender" value="male" placeholder="male"> <span>Male</span>
+                <input required type="radio" id="gender" name="gender" value="male" > <span>Male</span>
                 <input type="radio" id="gender" name="gender" value="female"> <span>Female</span>
                 <input type="radio" id="gender" name="gender" value="other"> <span>Other</span> <br>  
 
                 <div class="height-weight">
                     <div class="height">
                 <label for="height">Yours Height:</label><br>
-                <input type="number" min="100"  name="height" id="height" placeholder="Height in cm">
+                <input onfocus="inputFocus(this)" onfocusout="inputFocusOut(this)" type="number" min="100"  name="height" id="height" placeholder="Height in cm">
                      </div>
                      <div class="weight">
                 <label for="weight">Yours Weight:</label><br>
-                <input type="number" min="30" name="weight" id="weight" placeholder="Weight in kg">
+                <input onfocus="inputFocus(this)" onfocusout="inputFocusOut(this)" type="number" min="30" name="weight" id="weight" placeholder="Weight in kg">
                     </div>
                 </div>    
                 
                 <label for="photo">Yours Photo:</label><br>
-                <input type="file" name="photo" id="photo"><br>
+                <input type="file" name="photo" required id="photo">  <br>
                 <button type="submit" class="button">Save</button>
-                <input type="checkbox" name="agree" id="check" required value="check"><span>I agree to the Terms of Use</span>
-                
+                <input type="checkbox" name="agree" id="check" required value="check"><span>I agree to the Terms of Use</span><br>
+                <span class="alert">Not all mandatory fields marked.</span>
+
              </div>
              <div class="right-form">
                 <div class="right-top">

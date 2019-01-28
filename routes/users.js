@@ -36,13 +36,13 @@ var upload = multer({storage: storage});
 router.get('/createProfile', ProfileController.profile );
 router.post('/createProfile', upload.single('photo'), ProfileController.createProfile );
 
-router.get('/profileEdit/:id', ProfileController.profileEdit)
-router.post('/profileEdit/:id', upload.single('photo'), ProfileController.onEdit )
+router.get('/profileEdit', ProfileController.profileEdit)
+router.post('/profileEdit', upload.single('photo'), ProfileController.onEdit )
 
-router.get('/profileEnd/:id', ProfileController.profileEnd)
+router.get('/profileEnd', ProfileController.profileEnd)
 router.get('/newPassword', ProfileController.changePassword)
 
-router.get('/resultTracker', authGuard.canActivate, urlencodedParser, ProfileController.resultTracker )
+router.get('/resultTracker', authGuard.canActivate, urlencodedParser, ResultController.resultTracker )
 router.post('/addWeight', authGuard.canActivate, urlencodedParser, ResultController.addWeight)
 router.post('/centimetrsResult', authGuard.canActivate, urlencodedParser, ResultController.addMeasurments )
 

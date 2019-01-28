@@ -2,10 +2,10 @@
     font-family: 'Roboto', sans-serif;
 }
 body{
-    background-image: url(https://www.renomia.cz/files/sport-622003802-3500x2333.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0% 24%;
+    background-image: url(https://www.renomia.cz/files/sport-622003802-3500x2333.jpg) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 0% 24% !important;
 }
 .main-container{
     max-width: 1024px;
@@ -47,6 +47,7 @@ body{
 .left-form{
     width: 54%;
     border-right: 1px solid grey;
+    position: relative;
 }
 .left-form label, .newPass label{
     color: grey;
@@ -145,6 +146,14 @@ body{
 }
 .right-bottom textarea:focus{
     border-bottom: 1px solid  rgba(46, 188, 254, 0.9); 
+}
+span.alert {
+    margin: 0;
+    color: red;
+    font-size: 12px;
+    display: none;
+    position: absolute;
+    bottom: 70px;
 }
 /* page Profile-End styles  */
 .main-container-2 {
@@ -294,15 +303,15 @@ p.traumas{
 }
 .bodyWeightForm {
     text-align: right;
-    padding-right: 5%;
+    padding-left: 10%;
 }
 .bodyWeightForm input {
     padding: 5px 10px;
     font-size: 18px;
     color: grey;
 }
-.bodyWeightForm input:nth-child(2){
-    width: 25%;
+.bodyWeightForm input{
+    width: 31.2%;
 }
 .hiddenForm {
     display: none;
@@ -325,10 +334,10 @@ p.traumas{
     background-color: grey;
     
 }
-.main-container > table tr th{
+.main-container  table tr th{
     font-size: 26px;
     padding: 5px 0px;
-    width: 50%;
+ 
 }
 .main-container  table tr td {
     padding: 5px 0px 5px 5%;
@@ -336,8 +345,12 @@ p.traumas{
     background-color: #d6d3d399;
     width: 50%;
 }
+.main-container .measurmentsTable tr td {
+    width: 33%;
+}
 .measurments {
-    margin-top: 5%;
+    margin-top: 2%;
+    padding-bottom: 4%;
 }
 .measurments-header {
     margin: 10px;
@@ -346,16 +359,19 @@ p.traumas{
     align-items: center;
     border-bottom: 1px solid grey;
 }
-.exercise-header-inputs {
+.measurments-header-inputs {
     text-align: right;
     padding-right: 5%;
 }
-.exercise-header-inputs input {
+.measurments-header-inputs select {
+    width: 25%;
+}
+.measurments-header-inputs input, select {
     padding: 5px 10px;
     font-size: 18px;
     color: grey;
 }
-.exercise-header-inputs input:nth-child(2){
+.measurments-header-inputs input{
     width: 25%;
 }
 .measurments  table{
@@ -372,7 +388,4 @@ p.traumas{
     padding: 5px 0px 5px 5%;
     font-size: 18px;
     background-color: #d6d3d399;
-}
-.measurments form button {
-
 }

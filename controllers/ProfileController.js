@@ -6,7 +6,7 @@ profileController = {};
 
 //Profile main page
 profileController.profile = (req, res) => {
-    res.render('profile/profile');
+    res.render('profile/profile', {user: req.user});
 };
 
 //Profile post data
@@ -34,30 +34,30 @@ profileController.createProfile = (req, res, next) => {
     newProfile.save((err, profile) => {
         if (err) throw err;
         console.log(profile);
-        res.redirect('/profileEnd/' + profile._id);
+        res.redirect('/profileEnd/');
     })
 
 }
 
 //Profile cheked page
 profileController.profileEnd = (req, res) => {
-    Profile.findById(req.params.id, (err, profile) => {
+    Profile.findById(req.user.id, (err, profile) => {
         if (err) throw err;
-        res.render('profile/profileEnd', {userProfile: profile} );
+        res.render('profile/profileEnd', {userProfile: profile, user: req.user} );
     })
 }
 
 //Profile edit page
 profileController.profileEdit = (req, res) => {
-    Profile.findById(req.params.id, (err, userFromDB) =>{
+    Profile.findById(req.user.id, (err, userFromDB) =>{
         if (err) throw err;
-        res.render('profile/profileEdit', {editProfile: userFromDB});
+        res.render('profile/profileEdit', {editProfile: userFromDB, user: req.user});
     })
 }
 
 //Profile edit post data
 profileController.onEdit = (req, res) => {
-    Profile.findById(req.params.id, (err, userFromDB) => {
+    Profile.findById(req.user.id, (err, userFromDB) => {
         userFromDB.nickname = req.body.nickname,
         userFromDB.year = req.body.year,
         userFromDB.month = req.body.month,
@@ -76,7 +76,7 @@ profileController.onEdit = (req, res) => {
         }
         userFromDB.save( (err, editProfile) => {
             if (err) throw err;
-            res.render('profile/profileEnd' , {userProfile: editProfile})
+            res.render('profile/profileEnd' , {userProfile: editProfile, user: req.user})
         })
     })
 

@@ -1,50 +1,42 @@
 
-// let form = document.querySelector('.profile-form')
-// console.log(form);
-
-// let inputs = form.getElementsByTagName("input");
-// console.log(inputs);
-
 let validateForm = () => {
 
-    let form = document.forms['profileForm']['nickname', 'year', 'month', 'day', 
-     'height', 'weight', 'photo', 'gender' ].value;
-    if(form == ''){
-        console.log(form);
-        alert('Not all fields filling')
-        return false;
+    let inputs = document.querySelectorAll('.profile-form input');
+    let date = true;
+
+    for(let i = 0; i < 11; i++){
+
+        let newInput = inputs[i];
+       
+       if(newInput.value == ''){
+  
+            newInput.style.border = '1px solid red';
+            document.querySelector('.alert').style.display = 'block';
+       
+            if(date == true){
+                date = false;
+            }
+        }
+       }
+       return date;
+}
+
+ let inputFocus = (element) => {
+    element.style.border = '1px solid white';
+    element.style.borderBottom = '1px solid rgba(46, 188, 254, 0.9)';
+ }
+
+let inputFocusOut = (element) => {
+    element.style.border = '1px solid black';
+    if(element.value == ''){
+        element.style.border = '1px solid red';
+    }else{
+        element.style.border = '1px solid black';
     }
 }
-// let validateForm2 = () => {
-
-//     let form = document.forms['profileFormEdit']['nickname', 'year', 'month',
-//      'day',  'height', 'weight', 'photo', 'gender' ].value;
-//     if(form == ''){
-//         console.log(form);
-//         alert('Not all fields filling')
-//         return false;
-//     }
-// }
-
-
-//Result tracker 
-let bodyWeightForm = document.querySelector('.bodyWeightForm');
-let measurmentsForm = document.querySelector('.measurmentsForm')
-
-let openWeightForm = () => {
-    bodyWeightForm.classList.toggle('hiddenForm');
-}
-
-let openMeasForm = () => {
-    measurmentsForm.classList.toggle('hiddenForm');
-}
-
-let date = document.querySelector('.date')
-console.log(date.firstChild);
 
 
 
-// let user = {
-//     name: vardas,
-//     surName: pavarde
-// }
+
+
+
