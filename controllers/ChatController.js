@@ -159,6 +159,7 @@ chatController.loadOne = (req, res, next) => {
 		  	diffArray.push(minutes);
 	  })
 	  console.log("essagessssss",diffArray)
+	  console.log("MESSAGES>>>", messages);
       res.render('chat/conversation',{ conversation: messages, convID: req.params.id, diffArray: diffArray, user: req.user });
     });
 }
