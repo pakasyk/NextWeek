@@ -5,12 +5,14 @@ const WorkoutSchema = new Schema({
   name: String, // Bench Press
   status: Boolean,
   exercises: [
-    {
-      id: { type: Schema.Types.ObjectId, ref: "Exercise" },
+    
+      {_id: { type: Schema.Types.ObjectId, ref: "Exercise" },
+     
       
       sets: [
         {
-          rep: Number,
+          _id: false,
+          reps: Number,
           weight: Number
         }
       ]

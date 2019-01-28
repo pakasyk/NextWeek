@@ -19,23 +19,64 @@ workoutController.showAll = (req, res) => {
 })
 }
 
+workoutController.onEdit = (req, res) => {
+    console.log("onEdit");
+    
+    let workoutas = JSON.parse(req.body.data);
+    
+    
+    
+    Workout.findOneAndUpdate({
+        _id: workoutas._id
+    }, {
+        name: workoutas.name,
+        exercises: workoutas.exercises,
+        
+    }, (err, workout)=>{
+        if (err) throw err;
+       
+    });
+
+    
+    
+}
+
 /* saving new workout*/
 workoutController.onCreate = (req, res, next) => {
     console.log("onCreate");
-    console.log(req.body.data);
+    
     
     let workoutas = JSON.parse(req.body.data);
     let newWorkout = new Workout({
         ...workoutas  
     })
-    console.log("before.save");
+    
     
     newWorkout.save((err, workouts) => {
         if (err) throw err;
-        console.log(workouts);
+        
         
     })
 
+   
+
+}
+
+/* delete */
+workoutController.delete = (req, res) => {
+    console.log("delete");
+    
+    
+    Workout.findOneAndUpdate({
+        _id: req.body._id,
+    }, {
+        status: false,
+       
+    }, (err, exercise)=>{
+        if (err) throw err;
+       
+    });
+    
 }
 
 module.exports = workoutController;

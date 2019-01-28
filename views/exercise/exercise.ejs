@@ -67,7 +67,8 @@
                             <% } %>
                         </td>
                         <td>
-                            <span class="oi oi-delete" onclick="clickDelete(this)"></span>
+                            <span class="oi oi-delete" onclick="clickDelete(this)" data-toggle="tooltip"
+                            data-placement="right" title="Delete Exercise"></span>
                         </td>
                     </tr>
                     <% } %>
@@ -160,7 +161,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/exercises/edit" method="post" id="editForm" class="container">
+                        <form action="/workouts/edit" method="post" id="editForm" class="container">
                             <div class="row">
                                 <input type="text" class="form-control" name="_id" hidden>
                                 <fieldset class="form-group bmd-form-group col">

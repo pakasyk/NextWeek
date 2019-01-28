@@ -1,5 +1,7 @@
 let exercisesTR;
-
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
 const fetchAsync = async (url) =>
     await (await fetch(url)).json();
 
