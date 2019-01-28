@@ -1,4 +1,4 @@
-var User = require('../models/User');
+var User = require('../models/User').User;
 var passport = require('passport');
 authController = {};
 

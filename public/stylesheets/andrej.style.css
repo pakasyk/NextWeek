@@ -2,10 +2,10 @@
     font-family: 'Roboto', sans-serif;
 }
 body{
-    background-image: url(https://www.renomia.cz/files/sport-622003802-3500x2333.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0% 24%;
+    background-image: url(https://www.renomia.cz/files/sport-622003802-3500x2333.jpg) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 0% 24% !important;
 }
 .main-container{
     max-width: 1024px;
@@ -47,6 +47,7 @@ body{
 .left-form{
     width: 54%;
     border-right: 1px solid grey;
+    position: relative;
 }
 .left-form label, .newPass label{
     color: grey;
@@ -146,6 +147,14 @@ body{
 .right-bottom textarea:focus{
     border-bottom: 1px solid  rgba(46, 188, 254, 0.9); 
 }
+span.alert {
+    margin: 0;
+    color: red;
+    font-size: 12px;
+    display: none;
+    position: absolute;
+    bottom: 70px;
+}
 /* page Profile-End styles  */
 .main-container-2 {
     max-width: 600px;
@@ -218,6 +227,7 @@ p.traumas{
     border: none;
     cursor: pointer;
 }
+
 .check-buttons button:nth-child(1){
     margin-right: 3%;
 }
@@ -286,24 +296,28 @@ p.traumas{
     align-items: center;
     border-bottom: 1px solid grey;
 }
-.bodyweight h3 {
+.bodyweight h3, .measurments  h3 {
     font-size: 22px;
     padding-left: 5%;
     color: grey;
 }
 .bodyWeightForm {
     text-align: right;
-    padding-right: 5%;
+    padding-left: 10%;
 }
 .bodyWeightForm input {
     padding: 5px 10px;
     font-size: 18px;
     color: grey;
 }
-.bodyWeightForm input:nth-child(2){
-    width: 25%;
+.bodyWeightForm input{
+    width: 31.2%;
 }
-.bodyWeightForm input:nth-child(3){
+.hiddenForm {
+    display: none;
+}
+.bodyweight button, .measurments  button {
+    padding: 5px 10px;
     background-color: #2ebcfe;
     color: rgba(255, 255, 255, 0.9);
     font-weight: bold;
@@ -312,4 +326,66 @@ p.traumas{
     border: none;
     cursor: pointer;
     font-size: 22px;
+}
+.main-container > table {
+    width: 100%;
+}
+.main-container > table tr:nth-child(1) {
+    background-color: grey;
+    
+}
+.main-container  table tr th{
+    font-size: 26px;
+    padding: 5px 0px;
+ 
+}
+.main-container  table tr td {
+    padding: 5px 0px 5px 5%;
+    font-size: 18px;
+    background-color: #d6d3d399;
+    width: 50%;
+}
+.main-container .measurmentsTable tr td {
+    width: 33%;
+}
+.measurments {
+    margin-top: 2%;
+    padding-bottom: 4%;
+}
+.measurments-header {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+.measurments-header-inputs {
+    text-align: right;
+    padding-right: 5%;
+}
+.measurments-header-inputs select {
+    width: 25%;
+}
+.measurments-header-inputs input, select {
+    padding: 5px 10px;
+    font-size: 18px;
+    color: grey;
+}
+.measurments-header-inputs input{
+    width: 25%;
+}
+.measurments  table{
+    width: 100%;
+}
+.measurments  table tr:nth-child(1){
+    background-color: grey;
+}
+.measurments  table tr th{
+    font-size: 26px;
+    padding: 5px 0px;
+}
+.measurments  table tr td {
+    padding: 5px 0px 5px 5%;
+    font-size: 18px;
+    background-color: #d6d3d399;
 }
