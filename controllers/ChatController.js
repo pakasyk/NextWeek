@@ -154,9 +154,37 @@ chatController.doReply = (req, res, next) => {
 	  });
 }
 
+chatController.loadNewConversation = (req, res, next) => {
+	console.log("new conv params >>>>>", req.params);
+	Message.find({ conversationId: req.params.id })
+    .select('createdAt body author')
+    .sort('createdAt')
+    .populate({
+      path: 'author',
+      select: 'nickname _id'
+    })
+    .exec(function(err, messages) {
+      if (err) {
+        res.send({ error: err });
+        return next(err);
+	  }
+
+	  let diffArray = [];
+	  messages.forEach(message => {
+		let diff = Math.abs(new Date() - new Date(message.createdAt));
+		let minutes = Math.floor((diff/1000)/60);
+			// console.log("minutes>>>",minutes);
+			// console.log("message>>>",message);
+		  	diffArray.push(minutes);
+	  })
+	  console.log("essagessssss",diffArray)
+      res.render('chat/conversation',{ conversation: messages, convID: req.params.id, diffArray: diffArray, user: req.user });
+    });
+}
 
 
-chatController.sendMessage = (req, res, next) => {
+
+chatController.newConversation = (req, res, next) => {
   console.log(req.params);
   if (!req.params.id) {
     res
@@ -190,7 +218,7 @@ chatController.sendMessage = (req, res, next) => {
         res.send({ error: err });
         return next(err);
       }
-	  res.redirect(`/chat/${req.params.id}`);
+	  res.redirect(`/chat/${newConversation._id}`);
 	//    {
     //     message: "Conversation started!",
     //     conversationId: conversation._id

@@ -7,5 +7,7 @@ var chatController = require('../controllers/ChatController');
 router.get("/", chatController.chatHome);
 router.get("/:id", chatController.loadOne);
 router.post("/:id", chatController.doReply);
+router.get("/new/:id", chatController.loadNewConversation);
+router.post("/new/:id", chatController.newConversation);
 
 module.exports = router;
