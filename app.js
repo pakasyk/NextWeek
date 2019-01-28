@@ -71,6 +71,8 @@ app.use('/calendar', calendarRouter);
 app.use('/chat', chatRouter);
 app.use('/workouts', workoutsRouter);
 
+app.use('/', pagesRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

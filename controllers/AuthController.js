@@ -5,7 +5,7 @@ authController = {};
 
 authController.home = function(req, res){
     console.log(req.user)
-   res.render('index', {user: req.user, title: 'nextweek'});
+   res.render('index', {user: req.user, title: ''});
 }
 
 authController.login = function(req, res){
