@@ -1,4 +1,4 @@
-var User = require("../models/User");
+var User = require("../models/User").User;
 var Message = require("../models/Message");
 var Conversation = require("../models/Conversation");
 
@@ -6,6 +6,8 @@ var chatController = {};
 
 chatController.chatHome = (req, res, next) => {
   // Only return one message from each conversation to display as snippet
+
+
   Conversation.find({ participants: req.user._id })
 	.select("_id participants")
 	.populate('participants')
@@ -14,7 +16,33 @@ chatController.chatHome = (req, res, next) => {
         res.send({ error: err });
         return next(err);
 	  }
-	  console.log('conversations >>>>', conversations[0].participants[0]);
+	  if (!conversations.length){
+		let userList = [];
+		User.find({}, (err, users) => {
+		  // console.log(users);
+		  let selectedUserID = "";
+		  users.map(user => {
+			let userid1 = String(user._id);
+			let userid2 = String(req.user._id);
+			if (userid1 !== userid2) {
+			  userList.push({
+				nickname: user.nickname,
+				el_pastas: user.username,
+				id: user._id
+			  });
+			}
+		  });
+		  console.log("fullConversations >>>>>",fullConversations)
+		  res.render("chat/chat", {
+			userList: userList,
+			user: req.user,
+			selectedUserID: selectedUserID,
+			conversations: fullConversations,
+			conversationList : conversations				  
+		  });
+		});
+	  }
+	//   console.log('conversations >>>>', conversations[0].participants[0]);
 	
 
       // Set up empty array to hold conversations + most recent message

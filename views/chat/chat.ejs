@@ -37,12 +37,19 @@
                 <% userList.map( user =>{ %>
                 <li
                   class="active grey lighten-3 p-2"
-                  onclick="selectUser('<% user._id %>')"
                 >
-                  <a
-                    href="/chat/new/<%= user.id %>"
-                    class="d-flex justify-content-between"
-                  >
+                <% for (let j =0; j < conversationList.length; j++){ %>
+                    <% if (conversationList[j].participants[0].nickname == user.nickname || conversationList[j].participants[1].nickname == user.nickname ) { %>
+                        <% var chatExist = true %>
+                        <% var ind = j %>
+                        <% } %>
+                        
+                <% } %>
+
+                        <a
+                        href="/chat/<%= (chatExist)?conversationList[ind]._id:'new/' + user.id %>"
+                        class="d-flex justify-content-between"
+                      >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg"
                       alt="avatar"
