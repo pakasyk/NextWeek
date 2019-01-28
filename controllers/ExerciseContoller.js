@@ -66,20 +66,7 @@ exerciseController.findAll = (req, res) => {
 
 /* showing all exercises on exercises/exercises */
 exerciseController.showAll = function (req, res) {
-    console.log("showAll");
-    let muscles;
-    Muscle.find({}, (err, muscleList)=>{ 
-        if (err) throw err; 
-        muscles = muscleList;
-    })
-    Exercise.find({}, (err, exercises)=>{ 
-        if (err) throw err; 
-        
-        JSON.stringify(exercises.muscle);
-        
-        res.render('exercise/exercise', {exerciseList: exercises, muscleList: muscles});
-    })
-    
+    console.log("showAll");    
 
     Exercise.find({status: true})
         .populate('muscle', 'name')
@@ -95,11 +82,20 @@ exerciseController.showAll = function (req, res) {
             });
 
         })
+}
 
+exerciseController.delete = (req, res) => {
+    console.log("delete");
 
-
-
-
+    Exercise.findOneAndUpdate({
+        _id: req.body._id
+    }, {
+        status: false,
+       
+    }, (err, exercise)=>{
+        if (err) throw err;
+        console.log(exercise);
+    });
 }
 
 /* saving new muscle*/
@@ -169,8 +165,6 @@ muscleController.delete = (req, res) => {
         if (err) throw err;
         console.log(muscle);
     });
-
-    res.redirect('/exercises/muscles');
 }
     
 
@@ -231,6 +225,20 @@ equipmentController.showAll = (req, res) => {
     })
 }
 
+equipmentController.delete = (req, res) => {
+    console.log("delete");
+
+    Equipment.findOneAndUpdate({
+        _id: req.body._id
+    }, {
+        status: false,
+       
+    }, (err, equipments)=>{
+        if (err) throw err;
+        console.log(equipments);
+    });
+}
+
 
 /* saving new category*/
 categoryController.onCreate = (req, res, next) => {
@@ -285,6 +293,20 @@ categoryController.showAll = (req, res) => {
             categoryList: categories
         });
     })
+}
+
+categoryController.delete = (req, res) => {
+    console.log("delete");
+
+    Category.findOneAndUpdate({
+        _id: req.body._id
+    }, {
+        status: false,
+       
+    }, (err, category)=>{
+        if (err) throw err;
+        console.log(category);
+    });
 }
 
 

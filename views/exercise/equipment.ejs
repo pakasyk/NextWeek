@@ -37,17 +37,21 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% if(Object.keys(equipmentList).length){ %>
                     <% for(let i = 0; i < equipmentList.length; ++i){ %>
-                    <tr data-toggle="modal" data-target="#edit" data-id="<%= equipmentList[i]._id %>">
+                    <tr data-id="<%= equipmentList[i]._id %>">
                         <td scope="row">
                             <%= i+1 %>
                         </td>
                         <td>
                             <%= equipmentList[i].name %>
+                        </td>
+                        <td>
+                            <span class="oi oi-delete" onclick="deleteRow(this)"></span>
                         </td>
                     </tr>
                     <% } %>
@@ -134,6 +138,13 @@
     <script src="/js/bootstrap-material-design.min.js"></script>
     <script>
         let fromDBArray = <%- JSON.stringify(equipmentList) %>; //ignore that
+        let deleteRow = element => {
+            $('#delete').modal('hide');
+            postAjax('/exercises/equipments/delete', {
+                _id: element.parentNode.parentNode.dataset.id
+            }, function (data) {});
+            element.parentNode.parentNode.remove();
+        }
     </script>
     <script src="/javascripts/mnd_exercise_extra.js"></script>
 </body>

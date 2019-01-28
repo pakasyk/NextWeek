@@ -9,9 +9,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var pagesRouter = require('./routes/pages');
 var exercisesRouter = require('./routes/exercises');
 var calendarRouter = require('./routes/calendar');
 var workoutsRouter = require('./routes/workouts');
+var pagesRouter = require('./routes/pages');
+var chatRouter = require('./routes/chat');
 
 var app = express();
 
@@ -33,14 +36,6 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/nextweek-db', { useNewUrlParser: true })
 .then(() => console.log('Success connect to Database'))
 .catch((error)=> console.log(error));
-
-
-
-app.use(session({
-  secret: 'ManoSlaptasKeyKurioPagalbaUzkoduosVartotojuSlaptazodziuIDB',
-  resave: false,
-  saveUninitialized: false
-}))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -70,8 +65,10 @@ app.use(express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd')))
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', pagesRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/calendar', calendarRouter);
+app.use('/chat', chatRouter);
 app.use('/workouts', workoutsRouter);
 
 // catch 404 and forward to error handler
