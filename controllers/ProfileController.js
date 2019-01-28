@@ -79,8 +79,21 @@ profileController.onEdit = (req, res) => {
             res.render('profile/profileEnd' , {userProfile: editProfile, user: req.user})
         })
     })
-
 }
+//Profile delete account
+profileController.onDelete = ( req, res) => {
+    Profile.findById(req.user.id, (err, userFromDB) => {
+        // if (err) throw err;
+        // if(req.user.id != userFromDB.user_id){
+        //     res.redirect('/404')
+        // }
+        userFromDB.remove( (err) =>{
+            if (err) throw err;
+            res.redirect('/')
+        })
+    })
+}
+
 
 //Change password page
 profileController.changePassword = (req, res) => {

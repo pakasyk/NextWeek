@@ -155,6 +155,71 @@ span.alert {
     position: absolute;
     bottom: 70px;
 }
+body {
+    /* position: relative; */
+}
+
+.delete-box {
+    width: 420px;
+    height: 180px;
+    background-color: rgba(255,255,255, 0.9);
+    position: absolute;
+    top: -250px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 5;
+}
+.show-box{
+    top: 26px;
+    transition: 1s;
+}
+.show-box-2{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: grey;
+    opacity: 0.7;
+}
+.delete-box h2 {
+    padding: 8px 0 8px 20px;
+    margin: 0;
+    color:  rgba(255,255,255, 0.9);
+}
+.delete-box p {
+    padding-left: 10px;
+    color: grey;
+}
+.delete-box .del-buttons {
+    text-align: center;
+}
+.delete-box .del-buttons button {
+    padding: 1.5% 9%;
+    font-size: 20px;
+    margin-bottom: 12px;
+    background-color: #2ebcfe;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    border-radius: 10px;
+    opacity: 0.9;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.delete-box .del-buttons button:nth-child(2){
+    padding: 1.5% 4.4%;
+    background-color:  rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.9);
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
 /* page Profile-End styles  */
 .main-container-2 {
     max-width: 600px;

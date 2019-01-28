@@ -1,4 +1,4 @@
-
+//ProfileEdit formos inputai
 let validateForm = () => {
 
     let inputs = document.querySelectorAll('.profile-form input');
@@ -33,6 +33,11 @@ let inputFocusOut = (element) => {
     }else{
         element.style.border = '1px solid black';
     }
+}
+//Delete account
+let deleteForm = () => {
+    document.querySelector('.delete-box').classList.toggle('show-box');
+    document.querySelector('#show-box-2').classList.toggle('show-box-2');
 }
 
 

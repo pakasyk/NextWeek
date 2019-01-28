@@ -14,7 +14,7 @@
             <h1>Edit Profile Page</h1>
         </div>
         <h2>Hello <%= user.username %></h2>
-        <p><a href="/newPassword"> Change password</a></p>
+        <p><a href="/newPassword"> Change password</a> <a onclick="deleteForm();return false" href="#">Delete account</a></p>
         <form name="profileFormEdit" class="profile-form" action="/profileEdit" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" >
             <div class="left-form">
                 
@@ -91,7 +91,17 @@
              </div>
         </form>
     </div>
-
+    <div class="delete-box">
+        <div class="header">
+            <h2>Delete account</h2>
+        </div>
+        <p>Or you sure want to delete your account?</p>
+        <div class="del-buttons">
+            <button type="button" onclick="location.href='/profileDelete'">Ok</button>
+            <button onclick="deleteForm();return false" type="button">Cancel</button>
+        </div>
+    </div>
+    <div id="show-box-2"></div>
 
     <script src="/javascripts/profile_js.js"></script>
 </body>

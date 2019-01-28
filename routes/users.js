@@ -17,7 +17,7 @@ var storage = multer.diskStorage({
       cb(null, 'public/images/')
     },
     filename: (req, file, cb) => {
-      let filename = file.filename + '-' + Date.now() + '.jpg';
+      let filename = file.fieldname + '-' + Date.now() + '.jpg';
       console.log(file)
       sharp().resize(200, 200).toFile('images/new.jpg');
       
@@ -38,6 +38,7 @@ router.post('/createProfile', upload.single('photo'), ProfileController.createPr
 
 router.get('/profileEdit', ProfileController.profileEdit)
 router.post('/profileEdit', upload.single('photo'), ProfileController.onEdit )
+router.get('/profileDelete', authGuard.canActivate, urlencodedParser, ProfileController.onDelete)
 
 router.get('/profileEnd', ProfileController.profileEnd)
 router.get('/newPassword', ProfileController.changePassword)
