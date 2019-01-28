@@ -1,4 +1,4 @@
-var User = require("../models/User");
+var User = require("../models/User").User;
 var Message = require("../models/Message");
 var Conversation = require("../models/Conversation");
 
@@ -14,7 +14,7 @@ chatController.chatHome = (req, res, next) => {
         res.send({ error: err });
         return next(err);
 	  }
-	  console.log('conversations >>>>', conversations[0].participants[0]);
+	  // console.log('conversations >>>>', conversations[0].participants[0]);
 	
 
       // Set up empty array to hold conversations + most recent message

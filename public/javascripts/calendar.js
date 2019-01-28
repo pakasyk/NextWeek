@@ -1,3 +1,24 @@
+const fetchAsync = async (url) =>
+    await (await fetch(url)).json();
+let workoutsData;
+fetchAsync("/workouts/findAll")
+    .then(data => {
+
+      workoutsData = data;
+      let options = [];
+      data.forEach(workout => {
+        options.push({key: workout._id, label: workout.name});
+      });
+      console.log(workoutsData);
+      init();
+      scheduler.config.lightbox.sections[1].options = options;
+      
+      console.log(scheduler.config.lightbox.sections);
+      
+      
+    })
+    .catch(reason => console.log(reason.message));
+
 var init = () => {
   scheduler.config.first_hour = 7;
   scheduler.config.event_duration = 60;
@@ -24,13 +45,14 @@ var init = () => {
       map_to: "type",
       type: "select",
       options: [
-        { key: "Chest", label: "Chest" },
-        { key: "Legs", label: "Legs" },
-        { key: "Back", label: "Back" },
-        { key: "Biceps", label: "Biceps" },
-        { key: "Shoulders", label: "Shoulders" },
-        { key: "Triceps", label: "Triceps" }
+        // { key: "Chest", label: "Chest" },
+        // { key: "Legs", label: "Legs" },
+        // { key: "Back", label: "Back" },
+        // { key: "Biceps", label: "Biceps" },
+        // { key: "Shoulders", label: "Shoulders" },
+        // { key: "Triceps", label: "Triceps" }
       ],
+      
       onchange: function() {
         console.log(this.value);
         scheduler.formSection("description").setValue(this.value);
@@ -43,7 +65,9 @@ var init = () => {
       map_to: "rec_type",
       button: "recurring"
     },
-    { name: "time", height: 72, type: "time", map_to: "auto" }
+    { name: "time", height: 72, type: "time", map_to: "auto" },
+    
+
   ];
 
   if (
@@ -61,9 +85,12 @@ var init = () => {
   scheduler.templates.xml_date = function(value) {
     return new Date(value);
   };
+  
+  scheduler
   scheduler.load("/calendar/data", "json");
 
   var dp = new dataProcessor("/calendar/data");
   dp.init(scheduler);
+  console.log(dp);
   dp.setTransactionMode("POST", false);
 };

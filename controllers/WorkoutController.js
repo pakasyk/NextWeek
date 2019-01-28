@@ -79,4 +79,14 @@ workoutController.delete = (req, res) => {
     
 }
 
+workoutController.findAll = (req, res) => {
+    console.log("findAll");
+    Workout.find()
+    .exec((err, workouts)=>{
+        if (err) throw err;
+        res.send(workouts);
+    })
+    
+}
+
 module.exports = workoutController;

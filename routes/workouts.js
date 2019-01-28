@@ -9,6 +9,7 @@ router.get('/', workoutController.showAll);
 router.post('/', workoutController.onCreate);
 router.post('/edit', workoutController.onEdit);
 router.post('/delete', workoutController.delete);
+router.get('/findAll', workoutController.findAll);
 
 
 module.exports = router;

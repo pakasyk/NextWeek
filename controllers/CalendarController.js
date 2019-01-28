@@ -21,6 +21,8 @@ calController.loadEvents = (req, res) => {
 };
 
 calController.doEvent = function(req, res){
+    console.log("Do event");
+    
     console.log(req.body);
 	var data = req.body;
 	var mode = data["!nativeeditor_status"];
