@@ -6,6 +6,8 @@ var chatController = {};
 
 chatController.chatHome = (req, res, next) => {
   // Only return one message from each conversation to display as snippet
+
+
   Conversation.find({ participants: req.user._id })
 	.select("_id participants")
 	.populate('participants')
@@ -131,6 +133,7 @@ chatController.loadOne = (req, res, next) => {
 		  	diffArray.push(minutes);
 	  })
 	  console.log("essagessssss",diffArray)
+	  console.log("MESSAGES>>>", messages);
       res.render('chat/conversation',{ conversation: messages, convID: req.params.id, diffArray: diffArray, user: req.user });
     });
 }
