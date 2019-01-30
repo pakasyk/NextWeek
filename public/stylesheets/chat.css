@@ -29,9 +29,10 @@ box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 background-color: #82B1FF; }
 
 .rare-wind-gradient {
-background-image: -webkit-gradient(linear, left bottom, left top, from(#a8edea), to(#fed6e3));
-background-image: -webkit-linear-gradient(bottom, #a8edea 0%, #fed6e3 100%);
-background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); }
+background-image: -webkit-gradient(linear, left bottom, left top, from(#03DAC5), to(rgb(136, 62, 240) 100%));
+background-image: -webkit-linear-gradient(bottom, #03DAC5 0%, rgb(136, 62, 240) 100%);
+background-image: linear-gradient(to top, #03DAC5 0%, rgb(136, 62, 240) 100%); 
+}
 
 .chat-body {
     border-radius: 10px;
@@ -58,6 +59,13 @@ background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); }
     text-align: center;
     background-color: #ccc;
     border: 1px solid #ddd;
+}
+
+.z-depth-2 {
+    box-shadow: 3px 3px 20px;
+}
+.card-body {
+    height: 100vh;
 }
 
 /* .centered { */

@@ -20,18 +20,18 @@
     <link rel="stylesheet" href="/stylesheets/chat.css" />
   </head>
   <body>
-    <div class="card rare-wind-gradient chat-room">
+    <div class="card  chat-room rare-wind-gradient">
       <div class="card-body">
         <!-- Grid row -->
-        <div class="row  px-lg-2 px-2">
+        <div class="row d-flex justify-content-center centered px-lg-2 px-2 pt-5">
           <!-- Grid column -->
           <!-- Members Start -->
-          <div class="col-md-4 col-xl-4 centered  px-0">
-            <h6 class="font-weight-bold mb-3 text-center text-lg-left">
+          <div class="col-md-4 col-xl-4 centered px-0">
+            <h6 class="font-weight-bold mb-3 text-center ">
               Members
             </h6>
             <div
-              class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue"
+              class="white  px-2 pt-3 pb-0 members-panel-1 z-depth-2"
             >
               <ul class="list-unstyled friend-list">
                 <% userList.map( user =>{ %>
@@ -70,11 +70,11 @@
           <!-- Members End -->
           <!-- Conversations Start -->
           <div class="col-md-4 col-xl-4 px-0">
-            <h6 class="font-weight-bold mb-3 text-center text-lg-left">
+            <h6 class="font-weight-bold mb-3 text-center">
               Conversations
             </h6>
             <div
-              class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue"
+              class="white z-depth-2 px-2 pt-3 pb-0 members-panel-1"
             >
               <ul class="list-unstyled friend-list">
                 <% conversations.map( (conversation, i) =>{ %>
